@@ -1,10 +1,38 @@
 
 #include "message.h"
-#include <JsonSerializer.h>
-#include <LogMacros.h>
+#include <aws/core/utils/json/JsonSerializer.h>
+#include "aws_headers.h"
 
 namespace wellsfargo {
   namespace workshop {
+
+    /*
+     *  This is the sample SNS message. We should be looking for our "Message" within the Records[0].Sns.Message
+     * {
+          "Records": [
+          {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:.......",
+            "Sns": {
+              "Type": "Notification",
+              "MessageId": "ce4a1d7c-c50d-51ea-bfe8-4dc1078795fe",
+              "TopicArn": "arn:.......",
+              "Subject": null,
+              "Message": "test queue",
+              "Timestamp": "2016-12-04T07:05:46.709Z",
+              "SignatureVersion": "1",
+              "Signature": "<mysighere>",
+              "SigningCertUrl": "<pem url here>",
+              "UnsubscribeUrl": "<unsub url here>",
+              "MessageAttributes": {}
+            }
+            }
+          ]
+          } 
+     * 
+     */
+
 
     using namespace Aws::Utils::Json;
     const std::string JSON_KEY_EPOCH("epoch");
@@ -35,28 +63,32 @@ namespace wellsfargo {
         }
 
         JsonView view(value);
-
+        AWS_LOGSTREAM_DEBUG(TAG, "Created Json View" << view);
+        /*
         m_epoch = view.GetInt64(JSON_KEY_EPOCH);
-        m_tick_price = view.GetDouble(JSON_KEY_TICK);
-        m_tick_volatility = view.GetDouble(JSON_KEY_VOLATILITY);
-        auto quetemp = view.GetString(JSON_KEY_QUEUE_ENUM);
         if(m_epoch <= 0) {
           AWS_LOGSTREAM_ERROR(TAG, "Invalid epoch. Cannot proceed <" << payload << ">");
           throw std::runtime_error("Parse is not successful");
         }
+
+        m_tick_price = view.GetDouble(JSON_KEY_TICK);
         if(m_tick_price <= 0) {
           AWS_LOGSTREAM_ERROR(TAG, "Invalid price. Cannot proceed <" << payload << ">");
           throw std::runtime_error("Parse is not successful");
         }
+
+        m_tick_volatility = view.GetDouble(JSON_KEY_VOLATILITY);
         if(m_tick_volatility <= 0) {
           AWS_LOGSTREAM_ERROR(TAG, "Invalid volatility. Cannot proceed <" << payload << ">");
           throw std::runtime_error("Parse is not successful");
         }
+
+        auto quetemp = view.GetString(JSON_KEY_QUEUE_ENUM);
         if(quetemp.empty()) {
           AWS_LOGSTREAM_ERROR(TAG, "Queue is empty. Cannot proceed <" << payload << ">");
           throw std::runtime_error("Parse is not successful");
         }
-
+        
         bool found = false;
         for(int8_t idx = 0; idx < QueueNamesSize; ++idx) {
           if( QueueNames[idx].compare(quetemp) == 0 ) {
@@ -65,11 +97,11 @@ namespace wellsfargo {
             break;
           }
         }
-
         if(!found) {
           AWS_LOGSTREAM_ERROR(TAG, "Invalid Queue. Cannot proceed <" << payload << ">");
           throw std::runtime_error("Parse is not successful");
         }
+        */
       }
 
       
