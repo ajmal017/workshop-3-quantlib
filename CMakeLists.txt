@@ -10,10 +10,11 @@ list(APPEND CMAKE_MODULE_PATH "/apps/local/x64/lib64/aws-c-event-stream/cmake")
 
 project(wells-ws3-quantlib LANGUAGES CXX)
 
-find_package(AWSSDK REQUIRED COMPONENTS s3 core)
+find_package(AWSSDK REQUIRED COMPONENTS s3 sns core)
 find_package(aws-lambda-runtime)
-add_executable(${PROJECT_NAME} "main.cpp" "message.cpp" "OptionParser.cpp" )
+add_executable(${PROJECT_NAME} "message.cpp" "OptionParser.cpp" "main.cpp")
 
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PRIVATE AWS::aws-lambda-runtime ${AWSSDK_LINK_LIBRARIES})
 
 target_compile_features(${PROJECT_NAME} PRIVATE "cxx_std_11")

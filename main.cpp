@@ -5,35 +5,49 @@
 
 #include <aws/lambda-runtime/runtime.h>
 #include <aws/sns/SNSRequest.h>
-#include <aws/core/Aws.h>
-#include <aws/core/utils/json/JsonSerializer.h>
-#include "aws_headers.h"  //This should be last aws_header file in all C++ files
+#include <aws/sns/model/SubscribeRequest.h>
+#include <aws/sns/model/SubscribeResult.h>
+#include <aws/sns/SNSClient.h>
 
-const std::string TAG("main");
+#include <aws/core/Aws.h>
+#include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/logging/LogLevel.h>
+#include <aws/core/utils/logging/ConsoleLogSystem.h>
+#include <aws/core/utils/logging/LogMacros.h>
+#include <aws/core/utils/json/JsonSerializer.h>
+
+#include <aws/core/platform/Environment.h>
+#include <aws/core/client/ClientConfiguration.h>
+
+const char TAG[] = "main";
 
 namespace wellsfargo {
 namespace workshop {
 
   using namespace aws::lambda_runtime;
+  using namespace Aws::Utils::Json;
 
+    const std::string app_json("application/json");
     invocation_response sendError( const char* errormsg) {
       JsonValue response;
       response.WithString("body", errormsg).WithInteger("statusCode", 400);
       auto const apig_response = response.View().WriteCompact();
-      return invocation_response::success(apig_response, "application/json");
+      std::string api_resp(apig_response.c_str(), apig_response.size());
+      return invocation_response::success(api_resp, app_json);
     }
     
     invocation_response sendSuccess( const char* success) {
       JsonValue response;
       response.WithString("body", success).WithInteger("statusCode", 200);
       auto const apig_response = response.View().WriteCompact();
-      return invocation_response::success(apig_response, "application/json");
+      std::string api_resp(apig_response.c_str(), apig_response.size());
+      return invocation_response::success(api_resp, app_json);
     }
 
-    invocation_response run_local_handler(const invocation_request& req, int batchsize, int queueno)
+    invocation_response run_local_handler(const invocation_request& req, const std::string& queue)
     {
       AWS_LOGSTREAM_DEBUG(TAG, "received payload: " << req.payload);
-      InputMessage event(req.payload);
+      InputMessage event(AwsString(req.payload.c_str(), req.payload.size()));
 
       return sendSuccess("Recieved Message");
     }
@@ -47,14 +61,16 @@ namespace workshop {
     }
 
   }
-}
+} //close namespace
 
 int main(int argc, char* argv[])
 {
   using namespace Aws;
+  using namespace wellsfargo::workshop;
   SDKOptions awsoptions;
 
-  std::string m_topicname, m_queue_enum, m_lambda;
+  Aws::String m_topicname, m_lambda;
+  std::string m_queue_enum;
   bool m_debug = false;
 
   {
@@ -82,8 +98,8 @@ int main(int argc, char* argv[])
     
     Values& options = parse.parse_args(argc, argv);
     
-    m_topicname = options["topicname"];
-    m_lambda = options["lambda"];
+    m_topicname = Aws::String(options["topicname"].c_str(), options["topicname"].size());
+    m_lambda = Aws::String(options["lambda"].c_str(), options["lambda"].size());
     m_queue_enum = options["queue_enum"];
     m_debug = (options["debug"].compare("true") == 0);
 
@@ -98,13 +114,13 @@ int main(int argc, char* argv[])
                                           Utils::Logging::LogLevel::Debug : 
                                           Utils::Logging::LogLevel::Warn;
 
-  options.loggingOptions.logger_create_fn = GetConsoleLoggerFactory();
+  awsoptions.loggingOptions.logger_create_fn = GetConsoleLoggerFactory();
 
   InitAPI(awsoptions);
 
-  auto m_handler_func = [&m_batchsize, &m_queue_enum](const aws::lambda_runtime::invocation_request& req) 
+  auto m_handler_func = [&m_queue_enum](const aws::lambda_runtime::invocation_request& req) 
   {
-    return run_local_handler(req, m_batchsize, m_queue_enum);
+    return run_local_handler(req, m_queue_enum);
   };
 
   Aws::SNS::SNSClient sns;
@@ -123,7 +139,9 @@ int main(int argc, char* argv[])
   {
     AWS_LOGSTREAM_DEBUG(TAG, "Subscribed successfully");
     auto res = s_out.GetResult();
-    AWS_LOGSTREAM_DEBUG(TAG, "Subscribed output" << res);
+    //Aws::OStringStream output;
+    //res.GetResponseMetadata().OutputToStream( output );
+    //AWS_LOGSTREAM_DEBUG(TAG, output.str() );
   }
   else
   {

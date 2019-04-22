@@ -1,7 +1,7 @@
-#ifdef __WELLSFARGO_WORKSHOP_MESSAGE_H__
+#ifndef __WELLSFARGO_WORKSHOP_MESSAGE_H__
 #define __WELLSFARGO_WORKSHOP_MESSAGE_H__
 
-#include <string>
+#include <aws_headers.h>
 
 namespace wellsfargo {
   namespace workshop {
@@ -27,7 +27,7 @@ namespace wellsfargo {
         Queue     m_queue;
 
       public:
-        InputMessage(const std::string& payload);
+        InputMessage(const AwsString& payload);
     };
 
     class OutputMessage {
@@ -41,7 +41,7 @@ namespace wellsfargo {
       public:
 
         OutputMessage();  //This may take another class as input to create
-        std::string& payload() const; // convert this into the JSON string for the next SQS message
+        AwsString& payload() const; // convert this into the JSON string for the next SQS message
     };
 
   }

@@ -1,7 +1,12 @@
 
-#include "message.h"
+
 #include <aws/core/utils/json/JsonSerializer.h>
-#include "aws_headers.h"
+#include <aws/core/utils/logging/LogLevel.h>
+#include <aws/core/utils/logging/ConsoleLogSystem.h>
+#include <aws/core/utils/logging/LogMacros.h>
+
+#include <message.h>
+
 
 namespace wellsfargo {
   namespace workshop {
@@ -44,27 +49,28 @@ namespace wellsfargo {
     const std::string JSON_KEY_OPTION_PRICE("optpr");
     const std::string JSON_KEY_IS_PUT("is_put");
 
-    const std::string TAG("message");
+    const char TAG[] = "message";
     const std::string QueueNames[] = { "q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8" };
     const int8_t QueueNamesSize = sizeof(QueueNames)/sizeof(QueueNames[0]);
 
 
-    InputMessage::InputMessage(const std::string& payload)
+    InputMessage::InputMessage(const AwsString& payload)
       : m_epoch(0),
       m_tick_price(0.0),
       m_tick_volatility(0.0),
-      m_queue(DEAD_LETTER_QUEUE) {
+      m_queue(Queue::DEAD_LETTER_QUEUE) {
+
         JsonValue value(payload);
 
         if(!value.WasParseSuccessful()) {
-          AWS_LOGSTREAM_ERROR(TAG, "Payload parse not successful. Payload <" << payload << "> Error <"
-              << value.errorString() << ">");
+          AWS_LOGSTREAM_ERROR(TAG, "Payload parse not successful. Payload <" << payload.c_str() << "> Error <"
+              << value.GetErrorMessage() << ">");
           throw std::runtime_error("Payload parse is not successful");
         }
 
         JsonView view(value);
-        AWS_LOGSTREAM_DEBUG(TAG, "Created Json View" << view);
         /*
+        AWS_LOGSTREAM_DEBUG(TAG, "Created Json View" << view);
         m_epoch = view.GetInt64(JSON_KEY_EPOCH);
         if(m_epoch <= 0) {
           AWS_LOGSTREAM_ERROR(TAG, "Invalid epoch. Cannot proceed <" << payload << ">");
@@ -105,7 +111,7 @@ namespace wellsfargo {
       }
 
       
-      OutputMessage()
+    OutputMessage::OutputMessage()
         :m_epoch(0),
         m_strike_price(0.0),
         m_option_price(0.0),
