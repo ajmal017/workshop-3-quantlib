@@ -1,0 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+export AWS_EXECUTION_ENV=lambda-cpp
+exec $LAMBDA_TASK_ROOT/lib/ld-linux-x86-64.so.2 --library-path $LAMBDA_TASK_ROOT/lib $LAMBDA_TASK_ROOT/bin/wells-ws3-quantlib \
+  -k "AKIAZUEIMKZZFDLS5XNX" -s "TpMOH4+RQjQtwdBs7kIsAu9kSTO5fqOtr0fFj1zZ" \
+  -e "q0" -t "arn:aws:sns:ap-south-1:661710984818:TickVolQueue" \
+  -l "arn:aws:lambda:ap-south-1:661710984818:function:wells-ws3-quantlib" ${_HANDLER}

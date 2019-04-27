@@ -31,3 +31,7 @@
 *.exe
 *.out
 *.app
+*.zip
+build/**
+deploy/lib/**
+deploy/bin/**

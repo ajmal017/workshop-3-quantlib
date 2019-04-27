@@ -49,7 +49,7 @@ namespace wellsfargo {
     const std::string JSON_KEY_OPTION_PRICE("optpr");
     const std::string JSON_KEY_IS_PUT("is_put");
 
-    const char TAG[] = "message";
+    const char TAG[] = "WF.WORKSHOP.message";
     const std::string QueueNames[] = { "q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8" };
     const int8_t QueueNamesSize = sizeof(QueueNames)/sizeof(QueueNames[0]);
 
