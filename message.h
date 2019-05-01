@@ -1,49 +1,50 @@
 #ifndef __WELLSFARGO_WORKSHOP_MESSAGE_H__
 #define __WELLSFARGO_WORKSHOP_MESSAGE_H__
 
-#include <aws_headers.h>
+#include <string>
 
 namespace wellsfargo {
   namespace workshop {
 
-    enum class Queue : std::int8_t {
-      NEAR_PRICE = 0,
-      PRICE_MINUS_1_2,
-      PRICE_PLUS_1_2,
-      PRICE_MINUS_2_5,
-      PRICE_PLUS_2_5,
-      PRICE_MINUS_5_10,
-      PRICE_PLUS_5_10,
-      PRICE_MINUS_11,
-      PRICE_PLUS_11,
+    enum class StrikeBucket : std::int8_t {
+      NEAR_PRICE_5 = 0,
+      PRICE_RANGE_5_15,
+      PRICE_RANGE_15_30,
+      PRICE_RANGE_30_50,
+      PRICE_RANGE_50_75,
+      PRICE_RANGE_75_100,
       DEAD_LETTER_QUEUE = 99
     };
 
     class InputMessage {
       private:
-        uint64_t  m_epoch;
-        double    m_tick_price;   //This is the input price tick for the underlying equity
-        double    m_tick_volatility;  //This is the volatility change when that price tick happened
-        Queue     m_queue;
+        uint64_t    m_epoch;
+        double      m_tick_price;   //This is the input price tick for the underlying equity
+        double      m_tick_volatility;  //This is the volatility change when that price tick happened
+        std::string m_ticker_symbol;
 
       public:
-        InputMessage(const AwsString& payload);
+        InputMessage(const std::string& payload);
     };
 
-    class OutputMessage {
-      private:
-        uint64_t  m_epoch;
-        double    m_strike_price;   //This is the strike price for this this option is valued
-        double    m_option_price;   //This is the output option price that is calculated by the engine
-                                    //for the given variables
-        bool      m_isput;
+    class StrikeValue {
+        private:
+            float m_strike_price;
+            double m_put_price;
+            double m_call_price;
+ 
+        public:
+            StrikeValue(const decltype(m_strike_price) & sp) //Store a strike price
+                : m_strike_price(sp),
+                m_put_price(0.0),
+                m_call_price(0.0){}
 
-      public:
+            void addPutPrice(const double& p) { m_put_price = p;}
+            void addCallPrice(const double& p) { m_call_price = p;}
 
-        OutputMessage();  //This may take another class as input to create
-        AwsString& payload() const; // convert this into the JSON string for the next SQS message
-    };
-
+            std::string payload() const;
+   };
+    
   }
 }
 
