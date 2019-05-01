@@ -51,7 +51,8 @@ namespace workshop {
 
   invocation_response run_local_handler(const invocation_request& req, const std::string& queue)
   {
-    AWS_LOGSTREAM_DEBUG(TAG, "received payload: " << req.payload);
+    std::cerr << "recieved payload" << req.payload << " for queue " << queue << std::endl;
+    AWS_LOGSTREAM_DEBUG(TAG, "received payload: " << req.payload << "> for queue <" << queue << ">");
     InputMessage event(AwsString(req.payload.c_str(), req.payload.size()));
 
     return sendSuccess("Recieved Message");
@@ -166,12 +167,17 @@ int main(int argc, char* argv[])
   SDKOptions awsoptions;
 
   Aws::String m_topicname, m_lambda, m_key, m_secretkey;
-  std::string m_queue_enum;
+  std::string m_queue_enum("q0");
   bool m_debug = false;
 
+  for(auto idx = 0; idx < argc; idx++) {
+    std::cerr << "ARG " << idx << "<" << argv[idx] << ">" << std::endl;
+  }
+
+  /*
   optparse::Values options;
   getArguments(argc, argv, options);
-
+ 
   m_key = Aws::String(options["key"].c_str(), options["key"].size());
   m_secretkey = Aws::String(options["secretkey"].c_str(), options["secretkey"].size());
   m_topicname = Aws::String(options["topicname"].c_str(), options["topicname"].size());
@@ -185,7 +191,7 @@ int main(int argc, char* argv[])
     << "   Lambda: " << m_lambda << std::endl
     << "   Queue:  " << m_queue_enum << std::endl
     << "   Debug:  " << ((m_debug) ? "True" : "False") << std::endl;
-
+  */
   awsoptions.loggingOptions.logLevel = (m_debug) ? 
                                           Utils::Logging::LogLevel::Debug : 
                                           Utils::Logging::LogLevel::Warn;
@@ -198,6 +204,7 @@ int main(int argc, char* argv[])
     return run_local_handler(req, m_queue_enum);
   };
 
+/*
   Auth::AWSCredentials cred;
   if(!m_key.empty() && !m_secretkey.empty()) {
     cred.SetAWSAccessKeyId(m_key);
@@ -210,10 +217,10 @@ int main(int argc, char* argv[])
   if( !subscribe(cred, config, m_topicname, m_lambda) )
   {
     AWS_LOGSTREAM_ERROR(TAG, "Invalid subscription. But still running lambda to avoid loop");
-  }
+  }*/
 
   aws::lambda_runtime::run_handler(m_handler_func);
-  ShutdownAPI(awsoptions);
+  Aws::ShutdownAPI(awsoptions);
   return 0;
 }
 

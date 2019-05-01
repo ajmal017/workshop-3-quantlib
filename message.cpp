@@ -60,6 +60,7 @@ namespace wellsfargo {
       m_tick_volatility(0.0),
       m_queue(Queue::DEAD_LETTER_QUEUE) {
 
+        std::cerr << "WF.WORKSHOP recieved input message" << std::endl; 
         JsonValue value(payload);
 
         if(!value.WasParseSuccessful()) {
