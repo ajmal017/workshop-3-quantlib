@@ -14,6 +14,7 @@ const char TAG[] = "WF.WORKSHOP.main ";
 namespace wellsfargo {
 namespace workshop {
 
+/*
   using namespace aws::lambda_runtime;
   using namespace Aws::Utils::Json;
 
@@ -37,6 +38,8 @@ namespace workshop {
   }
 
   invocation_response run_local_handler(const invocation_request& req, const std::string& queue)
+  {*/
+  int app_main(const aws::lambda_runtime::invocation_request& req, const std::string& queue)
   {
 #if defined(WELLS_QUANTLIB_DEBUG)
     std::cerr << TAG << "recieved payload" << req.payload << " for queue " << queue << std::endl;
@@ -47,18 +50,15 @@ namespace workshop {
 
     optp.price(event);
 #if defined(WELLS_QUANTLIB_DEBUG)
-    std::cerr << TAG << "priced event " << event << " for prices " << optp.showPrices() << std::endl;
-#endif
-
-#if defined(WELLS_QUANTLIB_DEBUG)
-    std::cerr << TAG << "Output message " << prices.size() << std::endl;
+//    std::cerr << TAG << "priced event " << event << " for prices " << std::endl;
+    optp.showPrices();
 #endif
 
     DBHandler dbh;
     
-    dbh.send(event, optp.strikes());
-
-    return sendSuccess("Recieved Message");
+    dbh.save(event, optp.strikes());
+    return 0;
+    //return sendSuccess("Recieved Message");
   }
 
   } //close namespace
@@ -77,7 +77,13 @@ int main(int argc, char* argv[])
     if(envget) {
       m_queue_enum = envget;
     }
-
+    aws::lambda_runtime::invocation_request req;
+    req.payload = "{ 'Records': [ { 'EventSource': 'aws:sns', 'EventVersion': '1.0', 'EventSubscriptionArn': 'arn:aws:sns:ap-south-1:::-6022-4a28-8a41', \
+    'Sns': { 'Type': 'Notification', 'MessageId': 'b9ce43e7-780d--860c-', 'TopicArn': 'arn:aws:sns:ap-south-1::', 'Subject': null, \
+    'Message': {'Hello' : 'World'}, \
+    'Timestamp': '2019-04-30T19:00:00.944Z', 'SignatureVersion': '1', 'Signature': '/+///==', 'SigningCertUrl': 'https://amazonaws.com/SimpleNotificationService.pem', 'UnsubscribeUrl': 'https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19', 'MessageAttributes': {} } } ] }";
+    return app_main(req, m_queue_enum);
+/*
     Aws::InitAPI(awsoptions);
 
     auto m_handler_func = [&m_queue_enum](const aws::lambda_runtime::invocation_request& req) {
@@ -86,6 +92,7 @@ int main(int argc, char* argv[])
 
     aws::lambda_runtime::run_handler(m_handler_func);
     Aws::ShutdownAPI(awsoptions);
+    */
   }
   catch(const std::exception &ae) {
     std::cerr << "Caught Exception " << ae.what() << std::endl;
@@ -95,7 +102,6 @@ int main(int argc, char* argv[])
     std::cerr << "Unknown exception" << std::endl;
     return 1;
   }
-
   return 0;
 }
 

@@ -2,6 +2,7 @@
 #define __WELLSFARGO_WORKSHOP_OPTIONPRICER_H__
 
 #include "message.h"
+#include <vector>
 
 namespace wellsfargo {
     namespace workshop {
@@ -16,7 +17,9 @@ class OptionPricer {
 
     void price(const InputMessage& event);
 
-    const std::vector< StrikeValue>& strikes() const { return m_strikes; }    
+    const std::vector< StrikeValue>& strikes() const { return m_strikes; }   
+
+    void showPrices();
 
     private:
 

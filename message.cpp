@@ -9,29 +9,24 @@ namespace wellsfargo {
   namespace workshop {
 
     /*
-     *  This is the sample SNS message. We should be looking for our "Message" within the Records[0].Sns.Message
-     * {
-          "Records": [
-          {
-            "EventSource": "aws:sns",
-            "EventVersion": "1.0",
-            "EventSubscriptionArn": "arn:.......",
-            "Sns": {
-              "Type": "Notification",
-              "MessageId": "ce4a1d7c-c50d-51ea-bfe8-4dc1078795fe",
-              "TopicArn": "arn:.......",
-              "Subject": null,
-              "Message": "test queue",
-              "Timestamp": "2016-12-04T07:05:46.709Z",
-              "SignatureVersion": "1",
-              "Signature": "<mysighere>",
-              "SigningCertUrl": "<pem url here>",
-              "UnsubscribeUrl": "<unsub url here>",
-              "MessageAttributes": {}
-            }
-            }
-          ]
-          } 
+    { "Records": 
+    [ 
+      { 
+        "EventSource": "aws:sns",
+        "EventVersion": "1.0",
+        "EventSubscriptionArn": "arn:aws:sns:ap-south-1:661710984818:TickVolQueue:7335915d-6022-4a28-8a41-6ea6f23f6c19",
+        "Sns": { "Type": "Notification",
+        "MessageId": "b9ce43e7-780d-5a32-860c-16a5e57db623",
+        "TopicArn": "arn:aws:sns:ap-south-1:661710984818:TickVolQueue",
+        "Subject": null,
+        "Message": "\"Just dont fail\"",
+        "Timestamp": "2019-04-30T19:00:00.944Z",
+        "SignatureVersion": "1",
+        "Signature": "+/+++/+/+///==",
+        "SigningCertUrl": "https://sns.ap-south-1.amazonaws.com/SimpleNotificationService-6aad65c2f9911b05cd53efda11f913f9.pem",
+        "UnsubscribeUrl": "https://sns.ap-south-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-south-1:661710984818:TickVolQueue:7335915d-6022-4a28-8a41-6ea6f23f6c19",
+        "MessageAttributes": {} } } ] }
+     *
      * 
      */
 
@@ -86,18 +81,13 @@ namespace wellsfargo {
         throw std::runtime_error("Parse is not successful");
       }
 
-      m_ticker_symbol = view.GetString(JSON_KEY_TICKER);
+      m_ticker_symbol = view.GetString(JSON_KEY_TICKER).c_str();
       if(m_ticker_symbol.empty()) {
         std::cerr << TAG << "Invalid ticker symbol. Cannot proceed <" << payload << ">" << std::endl;
         throw std::runtime_error("Parse is not successful");
       }
     }
 
-    OutputMessage::OutputMessage()
-        :m_epoch(0),
-        m_strike_price(0.0),
-        m_option_price(0.0),
-        m_isput(false) { }
 
 
   }

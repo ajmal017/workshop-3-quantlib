@@ -4,8 +4,8 @@ project(wells-ws3-quantlib LANGUAGES CXX)
 
 find_package(AWSSDK REQUIRED COMPONENTS core dynamodb)
 find_package(aws-lambda-runtime REQUIRED)
-add_executable(${PROJECT_NAME} "message.cpp" "main.cpp")
-
+add_executable(${PROJECT_NAME} "message.cpp" "optionpricer.cpp" "dbhandler.cpp" "main.cpp")
+add_definitions(-DWELLS_QUANTLIB_DEBUG)
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
 target_link_libraries(${PROJECT_NAME} PUBLIC AWS::aws-lambda-runtime ${AWSSDK_LINK_LIBRARIES})
 

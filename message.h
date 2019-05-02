@@ -27,6 +27,8 @@ namespace wellsfargo {
         InputMessage(const std::string& payload);
     };
 
+    std::ostream& operator<<(std::ostream& os, const InputMessage& rhs);
+
     class StrikeValue {
         private:
             float m_strike_price;
@@ -45,6 +47,7 @@ namespace wellsfargo {
             std::string payload() const;
    };
     
+    std::ostream& operator<<(std::ostream& os, const StrikeValue& rhs);
   }
 }
 
