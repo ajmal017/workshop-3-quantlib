@@ -5,17 +5,6 @@
 
 namespace wellsfargo {
   namespace workshop {
-
-    enum class StrikeBucket : std::int8_t {
-      NEAR_PRICE_5 = 0,
-      PRICE_RANGE_5_15,
-      PRICE_RANGE_15_30,
-      PRICE_RANGE_30_50,
-      PRICE_RANGE_50_75,
-      PRICE_RANGE_75_100,
-      DEAD_LETTER_QUEUE = 99
-    };
-
     class InputMessage {
       private:
         uint64_t    m_epoch;
@@ -46,6 +35,10 @@ namespace wellsfargo {
                 : m_strike_price(sp),
                 m_put_price(0.0),
                 m_call_price(0.0){}
+
+            double strikePrice() const { return m_strike_price;}
+            double putPrice() const { return m_put_price;}
+            double callPrice() const { return m_call_price;}
 
             void addPutPrice(const double& p) { m_put_price = p;}
             void addCallPrice(const double& p) { m_call_price = p;}

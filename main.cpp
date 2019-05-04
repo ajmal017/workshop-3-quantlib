@@ -14,11 +14,15 @@ const char TAG[] = "WF.WORKSHOP.main ";
 namespace wellsfargo {
 namespace workshop {
 
-/*
   using namespace aws::lambda_runtime;
   using namespace Aws::Utils::Json;
 
   const std::string app_json("application/json");
+
+  namespace {
+    DBHandler g_dbh;
+  }
+
   invocation_response sendError( const char* errormsg) 
   {
     JsonValue response;
@@ -38,27 +42,18 @@ namespace workshop {
   }
 
   invocation_response run_local_handler(const invocation_request& req, const std::string& queue)
-  {*/
-  int app_main(const aws::lambda_runtime::invocation_request& req, const std::string& queue)
   {
 #if defined(WELLS_QUANTLIB_DEBUG)
     std::cerr << TAG << "recieved payload" << req.payload << " for queue " << queue << std::endl;
 #endif
+
     InputMessage event(req.payload);
+    OptionPricer pricer;
+    pricer.price(queue, event);
 
-    OptionPricer optp(queue, event);
-
-    optp.price();
-#if defined(WELLS_QUANTLIB_DEBUG)
-//    std::cerr << TAG << "priced event " << event << " for prices " << std::endl;
-    optp.showPrices();
-#endif
-
-    DBHandler dbh;
-    
-    dbh.save(event, optp.strikes());
-    return 0;
-    //return sendSuccess("Recieved Message");
+    g_dbh.save(event, pricer.strikes());
+    //return 0;
+    return sendSuccess("Recieved Message");
   }
 
   } //close namespace
@@ -71,28 +66,30 @@ int main(int argc, char* argv[])
 
   try
   {
-    std::string m_queue_enum("q0");
+    std::string m_queue_enum("sb3");
 
     char* envget = getenv("WF_STRIKE_BUCKET");
     if(envget) {
       m_queue_enum = envget;
     }
+    /*
     aws::lambda_runtime::invocation_request req;
     req.payload = "{ \"Records\": [ { \"EventSource\": \"aws:sns\", \"EventVersion\": \"1.0\", \"EventSubscriptionArn\": \"arn:aws:sns:ap-south-1:::-6022-4a28-8a41\", \
     \"Sns\": { \"Type\": \"Notification\", \"MessageId\": \"b9ce43e7-780d--860c-\", \"TopicArn\": \"arn:aws:sns:ap-south-1::\", \"Subject\": null, \
-    \"Message\": {\"tickpr\" : \"13.45\", \"tickvol\": \"4.56\", \"ticker\": \"VIX\", \"epoch\": 12345678}, \
+    \"Message\": {\"tickpr\" : \"12.87\", \"tickvol\": \"4.56\", \"symbol\": \"VIX\", \"epoch\": 12345678}, \
     \"Timestamp\": \"2019-04-30T19:00:00.944Z\", \"SignatureVersion\": \"1\", \"Signature\": \"/+///==\", \"SigningCertUrl\": \"https://amazonaws.com/SimpleNotificationService.pem\", \"UnsubscribeUrl\": \"https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19\", \"MessageAttributes\": {} } } ] }";
-    return app_main(req, m_queue_enum);
-/*
+    OptionPricer optp;
+    */
+
     Aws::InitAPI(awsoptions);
 
-    auto m_handler_func = [&m_queue_enum](const aws::lambda_runtime::invocation_request& req) {
+    auto m_handler_func = [&m_queue_enum ](const aws::lambda_runtime::invocation_request& req) {
       return run_local_handler(req, m_queue_enum);
     };
 
     aws::lambda_runtime::run_handler(m_handler_func);
     Aws::ShutdownAPI(awsoptions);
-    */
+
   }
   catch(const std::exception &ae) {
     std::cerr << "Caught Exception " << ae.what() << std::endl;

@@ -1,9 +1,8 @@
-
-
+#include "message.h"
 #include <aws/core/utils/json/JsonSerializer.h>
 
-#include <message.h>
-
+#include <iostream>
+#include <iomanip>
 
 namespace wellsfargo {
   namespace workshop {
@@ -35,7 +34,7 @@ namespace wellsfargo {
     const char JSON_KEY_EPOCH[] = "epoch";
     const char JSON_KEY_TICK[] = "tickpr";
     const char JSON_KEY_VOLATILITY[] = "tickvol";
-    const char JSON_KEY_TICKER[] = "ticker";
+    const char JSON_KEY_TICKER[] = "symbol";
 
     const char JSON_KEY_STRIKE_PRICE[] = "spr";
     const char JSON_KEY_OPTION_PRICE[] = "optpr";
@@ -95,6 +94,12 @@ namespace wellsfargo {
       }
     }
 
+    std::ostream& operator<<(std::ostream& os, const StrikeValue& rhs)
+    {
+      std::setprecision(6);
+      os << rhs.strikePrice() << ": Put \t:" << rhs.putPrice() << "\tCall \t:" << rhs.callPrice() << "\t";
+      return os;
+    }
   }
 }
 

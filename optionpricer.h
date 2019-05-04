@@ -12,9 +12,9 @@ namespace wellsfargo {
 class OptionPricer {
 
     public:
-    OptionPricer(const std::string& queue);
+    OptionPricer() = default;
 
-    void price(const InputMessage& event);
+    void price(const std::string& strikebucket, const InputMessage& event);
 
     const std::vector< StrikeValue>& strikes() const { return m_strikes; }   
 
@@ -22,9 +22,10 @@ class OptionPricer {
 
     private:
 
-    std::vector< StrikeValue> m_strikes;   
-    Tickers m_config;
-    StrikeBucket m_bucket; 
+    std::vector< StrikeValue> m_strikes;
+
+
+
 };
 
     }
