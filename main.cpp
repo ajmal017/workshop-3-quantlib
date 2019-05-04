@@ -46,9 +46,9 @@ namespace workshop {
 #endif
     InputMessage event(req.payload);
 
-    OptionPricer optp(queue);
+    OptionPricer optp(queue, event);
 
-    optp.price(event);
+    optp.price();
 #if defined(WELLS_QUANTLIB_DEBUG)
 //    std::cerr << TAG << "priced event " << event << " for prices " << std::endl;
     optp.showPrices();
@@ -78,10 +78,10 @@ int main(int argc, char* argv[])
       m_queue_enum = envget;
     }
     aws::lambda_runtime::invocation_request req;
-    req.payload = "{ 'Records': [ { 'EventSource': 'aws:sns', 'EventVersion': '1.0', 'EventSubscriptionArn': 'arn:aws:sns:ap-south-1:::-6022-4a28-8a41', \
-    'Sns': { 'Type': 'Notification', 'MessageId': 'b9ce43e7-780d--860c-', 'TopicArn': 'arn:aws:sns:ap-south-1::', 'Subject': null, \
-    'Message': {'Hello' : 'World'}, \
-    'Timestamp': '2019-04-30T19:00:00.944Z', 'SignatureVersion': '1', 'Signature': '/+///==', 'SigningCertUrl': 'https://amazonaws.com/SimpleNotificationService.pem', 'UnsubscribeUrl': 'https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19', 'MessageAttributes': {} } } ] }";
+    req.payload = "{ \"Records\": [ { \"EventSource\": \"aws:sns\", \"EventVersion\": \"1.0\", \"EventSubscriptionArn\": \"arn:aws:sns:ap-south-1:::-6022-4a28-8a41\", \
+    \"Sns\": { \"Type\": \"Notification\", \"MessageId\": \"b9ce43e7-780d--860c-\", \"TopicArn\": \"arn:aws:sns:ap-south-1::\", \"Subject\": null, \
+    \"Message\": {\"tickpr\" : \"13.45\", \"tickvol\": \"4.56\", \"ticker\": \"VIX\", \"epoch\": 12345678}, \
+    \"Timestamp\": \"2019-04-30T19:00:00.944Z\", \"SignatureVersion\": \"1\", \"Signature\": \"/+///==\", \"SigningCertUrl\": \"https://amazonaws.com/SimpleNotificationService.pem\", \"UnsubscribeUrl\": \"https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19\", \"MessageAttributes\": {} } } ] }";
     return app_main(req, m_queue_enum);
 /*
     Aws::InitAPI(awsoptions);

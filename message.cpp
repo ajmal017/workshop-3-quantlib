@@ -33,8 +33,8 @@ namespace wellsfargo {
 
     using namespace Aws::Utils::Json;
     const char JSON_KEY_EPOCH[] = "epoch";
-    const char JSON_KEY_TICK[] = "ticpr";
-    const char JSON_KEY_VOLATILITY[] = "ticvol";
+    const char JSON_KEY_TICK[] = "tickpr";
+    const char JSON_KEY_VOLATILITY[] = "tickvol";
     const char JSON_KEY_TICKER[] = "ticker";
 
     const char JSON_KEY_STRIKE_PRICE[] = "spr";
@@ -62,33 +62,38 @@ namespace wellsfargo {
       }
 
       JsonView view(value);
+      auto recs = view.GetArray("Records");
+      auto snsrec = recs[0].GetObject("Sns");
+      auto message = snsrec.GetObject("Message");
+      for(auto key : message.GetAllObjects()) {
+        if (key.first.compare(JSON_KEY_EPOCH) == 0) {
+          m_epoch = key.second.AsInt64();
+          continue;
+        }
+
+        //AsDouble is not working properly
+        if (key.first.compare(JSON_KEY_TICK) == 0) {
+          m_tick_price = std::atof(key.second.AsString().c_str());
+          continue;
+        }
+
+        if (key.first.compare(JSON_KEY_VOLATILITY) == 0) {
+          m_tick_volatility = std::atof(key.second.AsString().c_str());
+          continue;
+        }
+
+        if (key.first.compare(JSON_KEY_TICKER) == 0) {
+          m_ticker_symbol = key.second.AsString().c_str();
+          continue;
+        }
+      }
       
-      m_epoch = view.GetInt64(JSON_KEY_EPOCH);
-      if(m_epoch <= 0) {
-        std::cerr << TAG << "Invalid epoch. Cannot proceed <" << payload << ">" << std::endl;
-        throw std::runtime_error("Parse is not successful");
-      }
-
-      m_tick_price = view.GetDouble(JSON_KEY_TICK);
-      if(m_tick_price <= 0) {
-        std::cerr << TAG << "Invalid price. Cannot proceed <" << payload << ">" << std::endl;
-        throw std::runtime_error("Parse is not successful");
-      }
-
-      m_tick_volatility = view.GetDouble(JSON_KEY_VOLATILITY);
-      if(m_tick_volatility <= 0) {
-        std::cerr << TAG << "Invalid volatility. Cannot proceed <" << payload << ">" << std::endl;
-        throw std::runtime_error("Parse is not successful");
-      }
-
-      m_ticker_symbol = view.GetString(JSON_KEY_TICKER).c_str();
-      if(m_ticker_symbol.empty()) {
-        std::cerr << TAG << "Invalid ticker symbol. Cannot proceed <" << payload << ">" << std::endl;
-        throw std::runtime_error("Parse is not successful");
+      if(m_epoch <= 0 || m_tick_price <= 0 || m_tick_volatility <= 0 || m_ticker_symbol.empty()) {
+        std::cerr << "Epoch <" << m_epoch << "> price <" << m_tick_price 
+            << "> Vol <" << m_tick_volatility << "> Symbol <" << m_ticker_symbol << ">" << std::endl;
+        throw std::runtime_error("Message Parse is not successful");
       }
     }
-
-
 
   }
 }

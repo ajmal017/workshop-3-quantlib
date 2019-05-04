@@ -25,6 +25,12 @@ namespace wellsfargo {
 
       public:
         InputMessage(const std::string& payload);
+
+        const std::string& symbol() const { return m_ticker_symbol;}
+        const uint64_t& epoch() const { return m_epoch;}
+        const double& price() const { return m_tick_price;}
+        const double& volatility() const { return m_tick_volatility;}
+
     };
 
     std::ostream& operator<<(std::ostream& os, const InputMessage& rhs);
