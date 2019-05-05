@@ -17,7 +17,7 @@ namespace wellsfargo {
         namespace {
             const char access_key_id[] = "AKIARCADW6K2H3UMRRN4";
             const char secret_access_key[] = "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";
-            const char tablename[] = "arn:aws:dynamodb:ap-south-1:073022239412:table/PricerTable";
+            const char tablename[] = "PricerVol";
 
             const char JSON_KEY_EPOCH[] = "epoch";
             const char JSON_KEY_STRIKE_ENUM[] = "strike";
@@ -60,7 +60,7 @@ namespace wellsfargo {
                 for(auto idx = 0; idx < maxlen; ++idx) {
                     if(strikeIndices[idx] == st.strikePrice()) {
                         snprintf(sbbuffer, sizeof(sbbuffer), "S%d", idx);
-                        attvalue.SetN(sbbuffer);
+                        attvalue.SetS(sbbuffer);
                         dict.insert(std::make_pair(JSON_KEY_STRIKE_ENUM, attvalue));
                         break;
                     }
