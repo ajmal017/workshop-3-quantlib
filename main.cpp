@@ -20,7 +20,6 @@ namespace workshop {
   const std::string app_json("application/json");
 
   namespace {
-    DBHandler g_dbh;
   }
 
   invocation_response sendError( const char* errormsg) 
@@ -51,6 +50,7 @@ namespace workshop {
     OptionPricer pricer;
     pricer.price(queue, event);
 
+    DBHandler g_dbh;
     g_dbh.save(event, pricer.strikes());
     //return 0;
     return sendSuccess("Recieved Message");
@@ -72,13 +72,13 @@ int main(int argc, char* argv[])
     if(envget) {
       m_queue_enum = envget;
     }
+
     /*
     aws::lambda_runtime::invocation_request req;
     req.payload = "{ \"Records\": [ { \"EventSource\": \"aws:sns\", \"EventVersion\": \"1.0\", \"EventSubscriptionArn\": \"arn:aws:sns:ap-south-1:::-6022-4a28-8a41\", \
     \"Sns\": { \"Type\": \"Notification\", \"MessageId\": \"b9ce43e7-780d--860c-\", \"TopicArn\": \"arn:aws:sns:ap-south-1::\", \"Subject\": null, \
-    \"Message\": {\"tickpr\" : \"12.87\", \"tickvol\": \"4.56\", \"symbol\": \"VIX\", \"epoch\": 12345678}, \
+    \"Message\": \"{\\\"symbol\\\":\\\"VIX\\\",\\\"tickpr\\\":\\\"14.32\\\",\\\"lambda\\\":\\\"q0\\\",\\\"epoch\\\":1557042500422,\\\"tickvol\\\":\\\"15.67\\\"}\", \
     \"Timestamp\": \"2019-04-30T19:00:00.944Z\", \"SignatureVersion\": \"1\", \"Signature\": \"/+///==\", \"SigningCertUrl\": \"https://amazonaws.com/SimpleNotificationService.pem\", \"UnsubscribeUrl\": \"https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19\", \"MessageAttributes\": {} } } ] }";
-    OptionPricer optp;
     */
 
     Aws::InitAPI(awsoptions);
@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
 
     aws::lambda_runtime::run_handler(m_handler_func);
     Aws::ShutdownAPI(awsoptions);
-
+    // return run_local_handler(req, m_queue_enum);
   }
   catch(const std::exception &ae) {
     std::cerr << "Caught Exception " << ae.what() << std::endl;

@@ -58,8 +58,9 @@ namespace wellsfargo {
         public:
             Tickers() = default;
             const std::vector<std::string>& list() const { return m_tickers; }
-            const decltype(m_strikes) & listStrikes() const { return m_strikes; }
-            const std::vector< double >& endOfDayPrices() const { return m_endofday_prices; }
+            const StrikePriceTypes& listStrikes(const std::string& symbol) const;
+            
+            const double endOfDayPrices(const std::string& symbol) const;
 
             const StrikePriceTypes& listStrikesForBucket(const std::string& sb, const std::string& symbol);
 

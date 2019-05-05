@@ -3,46 +3,38 @@
 
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 namespace wellsfargo {
   namespace workshop {
 
-    /*
-    { "Records": 
-    [ 
-      { 
-        "EventSource": "aws:sns",
-        "EventVersion": "1.0",
-        "EventSubscriptionArn": "arn:aws:sns:ap-south-1:661710984818:TickVolQueue:7335915d-6022-4a28-8a41-6ea6f23f6c19",
-        "Sns": { "Type": "Notification",
-        "MessageId": "b9ce43e7-780d-5a32-860c-16a5e57db623",
-        "TopicArn": "arn:aws:sns:ap-south-1:661710984818:TickVolQueue",
-        "Subject": null,
-        "Message": "\"Just dont fail\"",
-        "Timestamp": "2019-04-30T19:00:00.944Z",
-        "SignatureVersion": "1",
-        "Signature": "+/+++/+/+///==",
-        "SigningCertUrl": "https://sns.ap-south-1.amazonaws.com/SimpleNotificationService-6aad65c2f9911b05cd53efda11f913f9.pem",
-        "UnsubscribeUrl": "https://sns.ap-south-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-south-1:661710984818:TickVolQueue:7335915d-6022-4a28-8a41-6ea6f23f6c19",
-        "MessageAttributes": {} } } ] }
-     *
-     * 
-     */
-
-
     using namespace Aws::Utils::Json;
-    const char JSON_KEY_EPOCH[] = "epoch";
-    const char JSON_KEY_TICK[] = "tickpr";
-    const char JSON_KEY_VOLATILITY[] = "tickvol";
-    const char JSON_KEY_TICKER[] = "symbol";
+    namespace {
 
-    const char JSON_KEY_STRIKE_PRICE[] = "spr";
-    const char JSON_KEY_OPTION_PRICE[] = "optpr";
-    const char JSON_KEY_IS_PUT[] = "is_put";
+      const char JSON_KEY_EPOCH[] = "epoch";
+      const char JSON_KEY_TICK[] = "tickpr";
+      const char JSON_KEY_VOLATILITY[] = "tickvol";
+      const char JSON_KEY_TICKER[] = "symbol";
 
-    const char TAG[] = "WF.WORKSHOP.message ";
 
-    InputMessage::InputMessage(const std::string& payload)
+      const char TAG[] = "WF.WORKSHOP.message ";
+
+      //We need this function to trim any extra '\' or '"' characters
+      std::string trim( const std::string& payload)
+      {
+        std::string buffer(payload);
+        buffer.erase(std::remove_if(buffer.begin(), buffer.end(), [](char c) { return c == '\\'; }), buffer.end());
+        
+        size_t stpos = 2;
+        stpos = buffer.find("\"{", stpos);
+        buffer.erase(buffer.begin() + stpos);
+        stpos = buffer.find("}\"", stpos);
+        buffer.erase(buffer.begin() + stpos + 1);
+        return buffer;
+      }
+
+    }
+        InputMessage::InputMessage(const std::string& payload)
       : m_epoch(0),
       m_tick_price(0.0),
       m_tick_volatility(0.0),
@@ -52,10 +44,11 @@ namespace wellsfargo {
 #if defined(WELLS_QUANTLIB_DEBUG)
       std::cerr << TAG << "recieved input message" << std::endl; 
 #endif
-      JsonValue value(payload.c_str());
+      auto tr = trim(payload);
+      JsonValue value(tr.c_str());
 
       if(!value.WasParseSuccessful()) {
-        std::cerr << TAG << "Payload parse not successful. Payload <" << payload.c_str() << "> Error <"
+        std::cerr << TAG << "Payload parse not successful. Payload <" << tr.c_str() << "> Error <"
             << value.GetErrorMessage() << ">" << std::endl;
         throw std::runtime_error("Payload parse is not successful");
       }
