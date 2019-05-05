@@ -1,49 +1,52 @@
-#ifdef __WELLSFARGO_WORKSHOP_MESSAGE_H__
+#ifndef __WELLSFARGO_WORKSHOP_MESSAGE_H__
 #define __WELLSFARGO_WORKSHOP_MESSAGE_H__
 
 #include <string>
 
 namespace wellsfargo {
   namespace workshop {
-
-    enum class Queue : std::int8_t {
-      NEAR_PRICE = 0,
-      PRICE_MINUS_1_2,
-      PRICE_PLUS_1_2,
-      PRICE_MINUS_2_5,
-      PRICE_PLUS_2_5,
-      PRICE_MINUS_5_10,
-      PRICE_PLUS_5_10,
-      PRICE_MINUS_11,
-      PRICE_PLUS_11,
-      DEAD_LETTER_QUEUE = 99
-    };
-
     class InputMessage {
       private:
-        uint64_t  m_epoch;
-        double    m_tick_price;   //This is the input price tick for the underlying equity
-        double    m_tick_volatility;  //This is the volatility change when that price tick happened
-        Queue     m_queue;
+        uint64_t    m_epoch;
+        double      m_tick_price;   //This is the input price tick for the underlying equity
+        double      m_tick_volatility;  //This is the volatility change when that price tick happened
+        std::string m_ticker_symbol;
 
       public:
         InputMessage(const std::string& payload);
+
+        const std::string& symbol() const { return m_ticker_symbol;}
+        const uint64_t& epoch() const { return m_epoch;}
+        const double& price() const { return m_tick_price;}
+        const double& volatility() const { return m_tick_volatility;}
+
     };
 
-    class OutputMessage {
-      private:
-        uint64_t  m_epoch;
-        double    m_strike_price;   //This is the strike price for this this option is valued
-        double    m_option_price;   //This is the output option price that is calculated by the engine
-                                    //for the given variables
-        bool      m_isput;
+    std::ostream& operator<<(std::ostream& os, const InputMessage& rhs);
 
-      public:
+    class StrikeValue {
+        private:
+            float m_strike_price;
+            double m_put_price;
+            double m_call_price;
+ 
+        public:
+            StrikeValue(const decltype(m_strike_price) & sp) //Store a strike price
+                : m_strike_price(sp),
+                m_put_price(0.0),
+                m_call_price(0.0){}
 
-        OutputMessage();  //This may take another class as input to create
-        std::string& payload() const; // convert this into the JSON string for the next SQS message
-    };
+            double strikePrice() const { return m_strike_price;}
+            double putPrice() const { return m_put_price;}
+            double callPrice() const { return m_call_price;}
 
+            void addPutPrice(const double& p) { m_put_price = p;}
+            void addCallPrice(const double& p) { m_call_price = p;}
+
+            std::string payload() const;
+   };
+    
+    std::ostream& operator<<(std::ostream& os, const StrikeValue& rhs);
   }
 }
 
