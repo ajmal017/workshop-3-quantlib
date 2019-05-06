@@ -21,7 +21,7 @@ namespace wellsfargo {
             return StrikePriceTypes(); 
         }
 
-        const double Tickers::endOfDayPrices(const std::string& symbol) const
+        double Tickers::endOfDayPrices(const std::string& symbol) const
         {
             for(uint32_t idx = 0; idx < 2; ++idx) {
                 if( m_tickers[idx].compare(symbol) == 0) {

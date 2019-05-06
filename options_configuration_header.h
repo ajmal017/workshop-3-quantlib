@@ -60,7 +60,7 @@ namespace wellsfargo {
             const std::vector<std::string>& list() const { return m_tickers; }
             const StrikePriceTypes& listStrikes(const std::string& symbol) const;
             
-            const double endOfDayPrices(const std::string& symbol) const;
+            double endOfDayPrices(const std::string& symbol) const;
 
             const StrikePriceTypes& listStrikesForBucket(const std::string& sb, const std::string& symbol);
 

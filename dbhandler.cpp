@@ -17,7 +17,7 @@ namespace wellsfargo {
         namespace {
             const char access_key_id[] = "AKIARCADW6K2H3UMRRN4";
             const char secret_access_key[] = "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";
-            const char tablename[] = "arn:aws:dynamodb:ap-south-1:073022239412:table/PricerTable";
+            const char tablename[] = "PricerVol";
 
             const char JSON_KEY_EPOCH[] = "epoch";
             const char JSON_KEY_STRIKE_ENUM[] = "strike";
@@ -51,39 +51,57 @@ namespace wellsfargo {
             {
                 char sbbuffer[16] = {0};
                 Aws::Map< Aws::String, AttributeValue > dict;
-                AttributeValue attvalue;
 
-                snprintf(sbbuffer, sizeof(sbbuffer), "%ld", event.epoch());
-                attvalue.SetN(sbbuffer);
-                dict.insert(std::make_pair(JSON_KEY_EPOCH, attvalue));
+                {
+                    snprintf(sbbuffer, sizeof(sbbuffer), "%ld", event.epoch());
+                    AttributeValue attvalue;
+                    attvalue.SetN(sbbuffer);
+                    dict.insert(std::make_pair(JSON_KEY_EPOCH, attvalue));
+                }
 
                 for(auto idx = 0; idx < maxlen; ++idx) {
                     if(strikeIndices[idx] == st.strikePrice()) {
                         snprintf(sbbuffer, sizeof(sbbuffer), "S%d", idx);
-                        attvalue.SetN(sbbuffer);
+                        AttributeValue attvalue;
+                        attvalue.SetS(sbbuffer);
                         dict.insert(std::make_pair(JSON_KEY_STRIKE_ENUM, attvalue));
                         break;
                     }
                 }
                 
-                attvalue.SetS(event.symbol().c_str());
-                dict.insert(std::make_pair(JSON_KEY_TICKER, attvalue));
+                {
+                    AttributeValue attvalue;
+                    attvalue.SetS(event.symbol().c_str());
+                    dict.insert(std::make_pair(JSON_KEY_TICKER, attvalue));
+                }
 
-                snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, event.price());
-                attvalue.SetN(sbbuffer);
-                dict.insert(std::make_pair(JSON_KEY_PRICE, attvalue));
+                {
+                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, event.price());
+                    AttributeValue attvalue;
+                    attvalue.SetN(sbbuffer);
+                    dict.insert(std::make_pair(JSON_KEY_PRICE, attvalue));
+                }
 
-                snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.strikePrice());
-                attvalue.SetN(sbbuffer);
-                dict.insert(std::make_pair(JSON_KEY_STRIKE_PRICE, attvalue));
+                {
+                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.strikePrice());
+                    AttributeValue attvalue;
+                    attvalue.SetN(sbbuffer);
+                    dict.insert(std::make_pair(JSON_KEY_STRIKE_PRICE, attvalue));
+                }
 
-                snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.putPrice());
-                attvalue.SetN(sbbuffer);
-                dict.insert(std::make_pair(JSON_KEY_PUT_PRICE, attvalue));
+                {
+                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.putPrice());
+                    AttributeValue attvalue;
+                    attvalue.SetN(sbbuffer);
+                    dict.insert(std::make_pair(JSON_KEY_PUT_PRICE, attvalue));
+                }
 
-                snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.callPrice());
-                attvalue.SetN(sbbuffer);
-                dict.insert(std::make_pair(JSON_KEY_CALL_PRICE, attvalue));
+                {
+                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.callPrice());
+                    AttributeValue attvalue;
+                    attvalue.SetN(sbbuffer);
+                    dict.insert(std::make_pair(JSON_KEY_CALL_PRICE, attvalue));
+                }
 
                 pir.WithItem(dict);
             }
