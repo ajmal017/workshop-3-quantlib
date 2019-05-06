@@ -73,15 +73,14 @@ namespace wellsfargo {
             while(iter != strikes.end() && *(iter + 1) < eodPrice) 
                 iter++;
 
-            outputAllStrikes.push_back({ *iter, *(iter + 1)});
-            iter = strikes.erase(iter);   //erase floor
-            iter = strikes.erase(iter);   //erase ceiling
-            for(auto idx = 1; idx < maxqueuelen; idx++)
+            outputAllStrikes.push_back({ *(iter - 1), *iter, *(iter + 1), *(iter + 2) }); //4 prices in first bucket
+            iter = strikes.erase(iter -1, iter + 3);   //erase them all
+            for(uint32_t idx = 1; idx < maxqueuelen; idx++)
                 outputAllStrikes.push_back(StrikePriceTypes());
 
             bool first = true;
             
-            for( auto idx = 1; idx < maxqueuelen; idx++) 
+            for( uint32_t idx = 1; idx < maxqueuelen; idx++) 
             {
                 int maxiterelems = (first ) ? 6 : 8;
                 int maxdistance = (first ) ? maxiterelems/2 : maxiterelems;

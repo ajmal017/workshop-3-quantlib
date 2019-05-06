@@ -43,7 +43,7 @@ namespace wellsfargo {
             void addPutPrice(const double& p) { m_put_price = p;}
             void addCallPrice(const double& p) { m_call_price = p;}
 
-            std::string payload() const;
+            std::string payload( const InputMessage& event) const;
    };
     
     std::ostream& operator<<(std::ostream& os, const StrikeValue& rhs);

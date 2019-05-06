@@ -54,7 +54,7 @@ namespace wellsfargo {
 
             const std::vector< StrikePriceTypes > m_strikes = { m_vixstrikes, m_ibmstrikes };
 
-            const std::vector< double > m_endofday_prices = { 14.64, 139.93 };
+            const std::vector< double > m_endofday_prices = { 17.70, 139.93 };
         public:
             Tickers() = default;
             const std::vector<std::string>& list() const { return m_tickers; }
