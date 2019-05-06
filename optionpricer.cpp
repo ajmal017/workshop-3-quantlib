@@ -13,6 +13,7 @@
 //#include <ql/termstructures/volatility/equityfx/blackconstantvol.hpp>
 //#include <ql/processes/blackscholesprocess.hpp>
 #include <ql/pricingengines/vanilla/binomialengine.hpp>
+#include <ql/pricingengines/vanilla/analyticeuropeanengine.hpp>
 #include <ql/exercise.hpp>
 
 
@@ -24,22 +25,6 @@ namespace wellsfargo {
         using namespace QuantLib;
         
         namespace {
-            struct StrikeOptionType {
-                Option::Type    m_type;
-                double          m_strike;
-
-                StrikeOptionType( const Option::Type& type, double strike)
-                : m_type(type),
-                m_strike(strike) {}
-
-                int operator<(const StrikeOptionType& rhs) const 
-                {
-                    return (m_strike == rhs.m_strike) ? (m_type < rhs.m_type) 
-                        : (m_strike < rhs.m_strike);
-                }
-            };
-            std::map< StrikeOptionType, VanillaOption > g_options;
-
             const Option::Type g_types[] = { Option::Type::Put, Option::Type::Call};
         }
 
@@ -65,17 +50,16 @@ namespace wellsfargo {
                 Date maturity(17, July, 2019);
                 DayCounter dayCounter = Actual365Fixed();
 
-                std::shared_ptr<Exercise> americanExercise = std::make_shared<AmericanExercise>(settlementDate, maturity);
+                std::shared_ptr<Exercise> exercise = std::make_shared<EuropeanExercise>(maturity);
                 Spread dividendYield = 0.00;
-                Rate riskFreeRate = 2.41;// The 3 month treasury Bill Rate;
-                Size timeSteps = 1000;
+                Rate riskFreeRate = 0.017;// www.livevol.com/option-calculator
 
                 Handle<YieldTermStructure> flatTermStructure( std::make_shared<FlatForward>(settlementDate, riskFreeRate, dayCounter));
                 Handle<YieldTermStructure> flatDividendTS( std::make_shared< FlatForward>(settlementDate, dividendYield, dayCounter));
 
-                for( auto strp : m_strikes )
+                for( StrikeValue& strp : m_strikes )
                 {
-                    for (auto typ : g_types)
+                    for (auto typ : g_types)    //for both put and call
                     {
                         Real underlying = event.price();
                         Handle<Quote> underlyingH(std::make_shared<SimpleQuote>(underlying));
@@ -83,32 +67,20 @@ namespace wellsfargo {
 
                         Volatility volatility = event.volatility();
                         Handle<BlackVolTermStructure> flatVolTS( std::make_shared< BlackConstantVol>(settlementDate, calendar, volatility, dayCounter));
-                        {
-                            StrikeOptionType optst( typ, strike);
-                            auto optfound = g_options.find(optst);
-                            if( optfound != g_options.end()) {
-                                VanillaOption& americanOption = optfound->second;
-                                if (typ == Option::Type::Put)
-                                    strp.addPutPrice(americanOption.NPV());
-                                else
-                                    strp.addCallPrice(americanOption.NPV());
-                            }
-                            else {
-                                std::shared_ptr<StrikedTypePayoff> payoff( std::make_shared<PlainVanillaPayoff>(typ, strike));
-                                VanillaOption americanOption(payoff, americanExercise);
+                        std::shared_ptr<StrikedTypePayoff> payoff( std::make_shared<PlainVanillaPayoff>(typ, strike));
+                        VanillaOption europeanOption(payoff, exercise);
 
-                                std::shared_ptr<BlackScholesMertonProcess> bsmProcess( std::make_shared<BlackScholesMertonProcess>(underlyingH, flatDividendTS,
-                                                        flatTermStructure, flatVolTS));
-                                americanOption.setPricingEngine(std::make_shared< BinomialVanillaEngine<JarrowRudd> >(bsmProcess,timeSteps));
-                                if (typ == Option::Type::Put)
-                                    strp.addPutPrice(americanOption.NPV());
-                                else
-                                    strp.addCallPrice(americanOption.NPV());
-                                g_options.insert(std::make_pair( optst, americanOption));
-                            }
-                        }
+                        std::shared_ptr<BlackScholesMertonProcess> bsmProcess( std::make_shared<BlackScholesMertonProcess>(underlyingH, flatDividendTS,
+                                                flatTermStructure, flatVolTS));
+                        //europeanOption.setPricingEngine(std::make_shared<  BinomialVanillaEngine<JarrowRudd> >(bsmProcess, timeSteps));
+                        europeanOption.setPricingEngine(std::make_shared<  AnalyticEuropeanEngine >(bsmProcess));
+                        if (typ == Option::Type::Put)
+                            strp.addPutPrice(europeanOption.NPV());
+                        else
+                            strp.addCallPrice(europeanOption.NPV());
                     }
                     std::cerr << "Priced Option " << strp << std::endl;
+
                 }
             }
             catch(const std::exception& e)

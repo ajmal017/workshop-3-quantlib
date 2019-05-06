@@ -1,16 +1,9 @@
 #include "dbhandler.h"
+#include "json.h"
 #include "options_configuration_header.h"
-#include <aws/core/Aws.h>
-#include <aws/core/utils/Outcome.h> 
-#include <aws/core/auth/AWSCredentials.h>
-#include <aws/dynamodb/DynamoDBClient.h>
-#include <aws/dynamodb/model/AttributeDefinition.h>
-#include <aws/dynamodb/model/AttributeValue.h>
-#include <aws/dynamodb/model/PutItemRequest.h>
-#include <aws/dynamodb/model/PutItemResult.h>
+#include <hiredis/hiredis.h>
 
 #include <iostream>
-#include <algorithm>
 
 namespace wellsfargo {
     namespace workshop {
@@ -19,98 +12,73 @@ namespace wellsfargo {
             const char secret_access_key[] = "70MyhDATC3gdc9MWDVYcO6jZmDB7TljMKOjS8sAT";
             const char tablename[] = "PricerVol";
 
-            const char JSON_KEY_EPOCH[] = "epoch";
-            const char JSON_KEY_STRIKE_ENUM[] = "strike";
-            const char JSON_KEY_TICKER[] = "symbol";
-            const char JSON_KEY_PRICE[] = "price";
-            const char JSON_KEY_STRIKE_PRICE[] = "strikePrice";
-            const char JSON_KEY_PUT_PRICE[] = "putValue";
-            const char JSON_KEY_CALL_PRICE[] = "callValue";
+            class RedisClient {
+                public:
 
-            const char DOUBLE_FORMAT[] = "%3.6f";
-            const Tickers g_tickers;
+                RedisClient():m_client() {}
+
+                ~RedisClient() {
+                    redisFree(m_client.get());
+                }
+                
+                bool isConnected() const { return (m_client != nullptr);}
+                void reset( redisContext* client) { m_client.reset(client); }
+
+                redisContext* get() { 
+                    if(!isConnected()) { return nullptr;}
+
+                    redisContext* c = m_client.get();
+                    return c;
+                }
+
+                private:
+                std::shared_ptr<redisContext> m_client;
+            };
+
+            static RedisClient g_client;
         }
+
         DBHandler::DBHandler() {
-            Aws::Client::ClientConfiguration clientConfig;
-            clientConfig.region = "ap-south-1";
-            Aws::Auth::AWSCredentials credentials(access_key_id, secret_access_key);
-            m_dbclient = std::make_shared<Aws::DynamoDB::DynamoDBClient>(credentials, clientConfig);
+            /*
+            if(!g_client.isConnected())
+            {
+                redisContext *client = 0;
+                const char* hostname = "pricevolcache-001.fy3nza.001.aps1.cache.amazonaws.com:6379";
+
+                struct timeval timeout = {1, 500000}; //1.5 seconds
+
+                client = redisConnectUnixWithTimeout(hostname, timeout);
+
+                if(client == NULL || client->err) {
+                    if (client) {
+                        std::cerr << "Connection error <" << client->errstr << "> for hostname <"
+                            << hostname << ">" << std::endl;
+                        throw std::runtime_error("Cannot connect to Redis DB");
+                    }
+                    else {
+                        std::cerr << "Connection error for hostname <" << hostname << ">" << std::endl;
+                        throw std::runtime_error("Cannot find Redis DB");
+                    }
+                }
+                g_client.reset(client);
+            }*/
         }
 
         void DBHandler::save(const InputMessage& event, const std::vector<StrikeValue> &strikes) 
-        {
-            using namespace Aws::Utils::Json;
-            using namespace Aws::DynamoDB::Model;
-            Aws::DynamoDB::Model::PutItemRequest pir;
-            pir.SetTableName(tablename);
-            
-            const auto strikeIndices = g_tickers.listStrikes(event.symbol());
-            const auto maxlen = strikeIndices.size();
-
+        { 
+            redisReply *reply = 0;
             for( auto st : strikes)
             {
-                char sbbuffer[16] = {0};
-                Aws::Map< Aws::String, AttributeValue > dict;
-
+                std::string temp = st.payload(event);
+                //reply = (redisReply *)redisCommand(g_client.get(), "SADD %d %.*s", 
+//                                                        event.epoch(), temp.size(), temp.c_str());
+                if(!reply || reply->type == REDIS_REPLY_ERROR)
                 {
-                    snprintf(sbbuffer, sizeof(sbbuffer), "%ld", event.epoch());
-                    AttributeValue attvalue;
-                    attvalue.SetN(sbbuffer);
-                    dict.insert(std::make_pair(JSON_KEY_EPOCH, attvalue));
+                    std::cerr << "error saving to db for <" << temp << "> for epoch <" << event.epoch() 
+                            << ">" << std::endl;
                 }
-
-                for(auto idx = 0; idx < maxlen; ++idx) {
-                    if(strikeIndices[idx] == st.strikePrice()) {
-                        snprintf(sbbuffer, sizeof(sbbuffer), "S%d", idx);
-                        AttributeValue attvalue;
-                        attvalue.SetS(sbbuffer);
-                        dict.insert(std::make_pair(JSON_KEY_STRIKE_ENUM, attvalue));
-                        break;
-                    }
-                }
-                
-                {
-                    AttributeValue attvalue;
-                    attvalue.SetS(event.symbol().c_str());
-                    dict.insert(std::make_pair(JSON_KEY_TICKER, attvalue));
-                }
-
-                {
-                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, event.price());
-                    AttributeValue attvalue;
-                    attvalue.SetN(sbbuffer);
-                    dict.insert(std::make_pair(JSON_KEY_PRICE, attvalue));
-                }
-
-                {
-                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.strikePrice());
-                    AttributeValue attvalue;
-                    attvalue.SetN(sbbuffer);
-                    dict.insert(std::make_pair(JSON_KEY_STRIKE_PRICE, attvalue));
-                }
-
-                {
-                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.putPrice());
-                    AttributeValue attvalue;
-                    attvalue.SetN(sbbuffer);
-                    dict.insert(std::make_pair(JSON_KEY_PUT_PRICE, attvalue));
-                }
-
-                {
-                    snprintf(sbbuffer, sizeof(sbbuffer), DOUBLE_FORMAT, st.callPrice());
-                    AttributeValue attvalue;
-                    attvalue.SetN(sbbuffer);
-                    dict.insert(std::make_pair(JSON_KEY_CALL_PRICE, attvalue));
-                }
-
-                pir.WithItem(dict);
+                //freeReplyObject(reply);
             }
-
-            auto response = m_dbclient->PutItem(pir);
-            if (!response.IsSuccess()) {
-                std::cerr << "DB insert failed for epoch " << event.epoch() << ". Error: "
-                    << response.GetError().GetMessage() << std::endl;
-            } 
 
             return;
         }
