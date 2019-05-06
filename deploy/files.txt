@@ -1,334 +1,334 @@
--rwxrwxr-x. 1 neo neo   452632 Apr 28 00:50 bin/wells-ws3-quantlib
--rwxrwxr-x. 1 neo neo      422 Apr 27 20:29 bootstrap
--rwxr-xr-x. 1 neo neo    25184 Apr 11 15:38 lib/ANSI_X3.110.so
--rwxr-xr-x. 1 neo neo    12672 Apr 11 15:38 lib/ARMSCII-8.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ASMO_449.so
--rwxr-xr-x. 1 neo neo   237984 Apr 11 15:38 lib/BIG5HKSCS.so
--rwxr-xr-x. 1 neo neo    91032 Apr 11 15:38 lib/BIG5.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/BRF.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/CP10007.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1125.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1250.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1251.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1252.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1253.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1254.so
--rwxr-xr-x. 1 neo neo    16880 Apr 11 15:38 lib/CP1255.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1256.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP1257.so
--rwxr-xr-x. 1 neo neo    16896 Apr 11 15:38 lib/CP1258.so
--rwxr-xr-x. 1 neo neo    12920 Apr 11 15:38 lib/CP737.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP770.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP771.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP772.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP773.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CP774.so
--rwxr-xr-x. 1 neo neo    12944 Apr 11 15:38 lib/CP775.so
--rwxr-xr-x. 1 neo neo    99000 Apr 11 15:38 lib/CP932.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/CSN_369103.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/CWI.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/DEC-MCS.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-AT-DE-A.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-AT-DE.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-CA-FR.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-DK-NO-A.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-DK-NO.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/EBCDIC-ES-A.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/EBCDIC-ES.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/EBCDIC-ES-S.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-FI-SE-A.so
--rwxr-xr-x. 1 neo neo    12664 Apr 11 15:38 lib/EBCDIC-FI-SE.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/EBCDIC-FR.so
--rwxr-xr-x. 1 neo neo    12704 Apr 11 15:38 lib/EBCDIC-IS-FRISS.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/EBCDIC-IT.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/EBCDIC-PT.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/EBCDIC-UK.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/EBCDIC-US.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/ECMA-CYRILLIC.so
--rwxr-xr-x. 1 neo neo    17152 Apr 11 15:38 lib/EUC-CN.so
--rwxr-xr-x. 1 neo neo    16984 Apr 11 15:38 lib/EUC-JISX0213.so
--rwxr-xr-x. 1 neo neo    86760 Apr 11 15:38 lib/EUC-JP-MS.so
--rwxr-xr-x. 1 neo neo    17136 Apr 11 15:38 lib/EUC-JP.so
--rwxr-xr-x. 1 neo neo    16912 Apr 11 15:38 lib/EUC-KR.so
--rwxr-xr-x. 1 neo neo    26152 Apr 11 15:38 lib/EUC-TW.so
--rwxr-xr-x. 1 neo neo   180696 Apr 11 15:38 lib/GB18030.so
--rwxr-xr-x. 1 neo neo    57696 Apr 11 15:38 lib/GBBIG5.so
--rwxr-xr-x. 1 neo neo    12544 Apr 11 15:38 lib/GBGBK.so
--rwxr-xr-x. 1 neo neo   115512 Apr 11 15:38 lib/GBK.so
--rwxr-xr-x. 1 neo neo    12704 Apr 11 15:38 lib/GEORGIAN-ACADEMY.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/GEORGIAN-PS.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/GOST_19768-74.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/GREEK7-OLD.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/GREEK7.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/GREEK-CCITT.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/HP-GREEK8.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/HP-ROMAN8.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/HP-ROMAN9.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/HP-THAI8.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/HP-TURKISH8.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM037.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM038.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1004.so
--rwxr-xr-x. 1 neo neo     8560 Apr 11 15:38 lib/IBM1008_420.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1008.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1025.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1026.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1046.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM1047.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1097.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1112.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1122.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1123.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1124.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1129.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1130.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1132.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1133.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1137.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1140.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1141.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1142.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1143.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1144.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1145.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1146.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1147.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1148.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1149.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1153.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1154.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1155.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1156.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1157.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1158.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1160.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1161.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1162.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1163.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1164.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1166.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM1167.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM12712.so
--rwxr-xr-x. 1 neo neo   152136 Apr 11 15:38 lib/IBM1364.so
--rwxr-xr-x. 1 neo neo   127560 Apr 11 15:38 lib/IBM1371.so
--rwxr-xr-x. 1 neo neo   176712 Apr 11 15:38 lib/IBM1388.so
--rwxr-xr-x. 1 neo neo   230064 Apr 11 15:38 lib/IBM1390.so
--rwxr-xr-x. 1 neo neo   230064 Apr 11 15:38 lib/IBM1399.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM16804.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM256.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM273.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM274.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM275.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM277.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM278.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM280.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM281.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM284.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM285.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM290.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM297.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM420.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM423.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM424.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM437.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM4517.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM4899.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM4909.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM4971.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM500.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM5347.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM803.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM850.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM851.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM852.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM855.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM856.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM857.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM860.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM861.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM862.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM863.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM864.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM865.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM866NAV.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM866.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM868.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM869.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM870.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM871.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM874.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM875.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM880.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM891.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM901.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM902.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM9030.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM903.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM904.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/IBM905.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM9066.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM918.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM921.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/IBM922.so
--rwxr-xr-x. 1 neo neo   107064 Apr 11 15:38 lib/IBM930.so
--rwxr-xr-x. 1 neo neo    70192 Apr 11 15:38 lib/IBM932.so
--rwxr-xr-x. 1 neo neo   127544 Apr 11 15:38 lib/IBM933.so
--rwxr-xr-x. 1 neo neo    90680 Apr 11 15:38 lib/IBM935.so
--rwxr-xr-x. 1 neo neo   115256 Apr 11 15:38 lib/IBM937.so
--rwxr-xr-x. 1 neo neo   107064 Apr 11 15:38 lib/IBM939.so
--rwxr-xr-x. 1 neo neo    74288 Apr 11 15:38 lib/IBM943.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IBM9448.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/IEC_P27-1.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/INIS-8.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/INIS-CYRILLIC.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/INIS.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISIRI-3342.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/ISO_10367-BOX.so
--rwxr-xr-x. 1 neo neo    12592 Apr 11 15:38 lib/ISO_11548-1.so
--rwxr-xr-x. 1 neo neo    47216 Apr 11 15:38 lib/ISO-2022-CN-EXT.so
--rwxr-xr-x. 1 neo neo    34392 Apr 11 15:38 lib/ISO-2022-CN.so
--rwxr-xr-x. 1 neo neo    25424 Apr 11 15:38 lib/ISO-2022-JP-3.so
--rwxr-xr-x. 1 neo neo    42800 Apr 11 15:38 lib/ISO-2022-JP.so
--rwxr-xr-x. 1 neo neo    16888 Apr 11 15:38 lib/ISO-2022-KR.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO_2033.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/ISO_5427-EXT.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO_5427.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO_5428.so
--rwxr-xr-x. 1 neo neo    25048 Apr 11 15:38 lib/ISO646.so
--rwxr-xr-x. 1 neo neo    20952 Apr 11 15:38 lib/ISO_6937-2.so
--rwxr-xr-x. 1 neo neo    20944 Apr 11 15:38 lib/ISO_6937.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-10.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-11.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-13.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-14.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-15.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-16.so
--rwxr-xr-x. 1 neo neo    12584 Apr 11 15:38 lib/ISO8859-1.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/ISO8859-2.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/ISO8859-3.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/ISO8859-4.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-5.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/ISO8859-6.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-7.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-8.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO8859-9E.so
--rwxr-xr-x. 1 neo neo    12656 Apr 11 15:38 lib/ISO8859-9.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO-IR-197.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/ISO-IR-209.so
--rwxr-xr-x. 1 neo neo    21312 Apr 11 15:38 lib/JOHAB.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/KOI8-R.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/KOI8-RU.so
--rwxr-xr-x. 1 neo neo    12648 Apr 11 15:38 lib/KOI-8.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/KOI8-T.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/KOI8-U.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/LATIN-GREEK-1.so
--rwxr-xr-x. 1 neo neo    12696 Apr 11 15:38 lib/LATIN-GREEK.so
--rwxr-xr-x. 1 neo neo   163400 Apr 11 15:38 lib/ld-linux-x86-64.so.2
--rwxr-xr-x. 1 neo neo    19840 Apr 11 15:38 lib/libanl-2.17.so
-lrwxrwxrwx. 1 neo neo       14 Apr 25 09:30 lib/libanl.so.1 -> libanl-2.17.so
--rwxr-xr-x. 1 neo neo   126176 Apr 25 09:57 lib/libaws-c-common.so.0unstable
--rwxr-xr-x. 1 neo neo    37144 Apr 25 09:57 lib/libaws-c-event-stream.so.0unstable
--rwxr-xr-x. 1 neo neo    46272 Apr 25 09:58 lib/libaws-checksums.so
--rwxr-xr-x. 1 neo neo  1437936 Apr 25 09:54 lib/libaws-cpp-sdk-core.so
--rwxr-xr-x. 1 neo neo  4579856 Apr 25 09:48 lib/libaws-cpp-sdk-s3.so
--rwxr-xr-x. 1 neo neo  1433864 Apr 25 09:48 lib/libaws-cpp-sdk-sns.so
--rwxr-xr-x. 1 neo neo     8480 Apr 11 15:38 lib/libBrokenLocale-2.17.so
-lrwxrwxrwx. 1 neo neo       23 Apr 25 09:30 lib/libBrokenLocale.so.1 -> libBrokenLocale-2.17.so
--rwxr-xr-x. 1 neo neo  2151672 Apr 11 15:38 lib/libc-2.17.so
--rwxr-xr-x. 1 neo neo   201064 Apr 11 15:38 lib/libcidn-2.17.so
-lrwxrwxrwx. 1 neo neo       15 Apr 25 09:30 lib/libcidn.so.1 -> libcidn-2.17.so
--rwxr-xr-x. 1 neo neo   472240 Apr 11 15:38 lib/libCNS.so
--rwxr-xr-x. 1 neo neo    15920 Apr 11 15:38 lib/libcom_err.so.2
--rwxr-xr-x. 1 neo neo    40664 Apr 11 15:38 lib/libcrypt-2.17.so
--rwxr-xr-x. 1 neo neo  2516624 Apr 11 15:38 lib/libcrypto.so.10
-lrwxrwxrwx. 1 neo neo       16 Apr 25 09:30 lib/libcrypt.so.1 -> libcrypt-2.17.so
-lrwxrwxrwx. 1 neo neo       12 Apr 25 09:30 lib/libc.so.6 -> libc-2.17.so
--rwxr-xr-x. 1 neo neo   435192 Apr 11 15:38 lib/libcurl.so.4
--rwxr-xr-x. 1 neo neo    19288 Apr 11 15:38 lib/libdl-2.17.so
-lrwxrwxrwx. 1 neo neo       13 Apr 25 09:30 lib/libdl.so.2 -> libdl-2.17.so
--rwxr-xr-x. 1 neo neo    11448 Apr 11 15:38 lib/libfreebl3.so
--rwxr-xr-x. 1 neo neo    69992 Apr 11 15:38 lib/libGB.so
--rwxr-xr-x. 1 neo neo    88776 Apr 11 15:38 lib/libgcc_s.so.1
--rwxr-xr-x. 1 neo neo   320400 Apr 11 15:38 lib/libgssapi_krb5.so.2
--rwxr-xr-x. 1 neo neo   208920 Apr 11 15:38 lib/libidn.so.11
--rwxr-xr-x. 1 neo neo    61464 Apr 11 15:38 lib/libISOIR165.so
--rwxr-xr-x. 1 neo neo   102816 Apr 11 15:38 lib/libJIS.so
--rwxr-xr-x. 1 neo neo   123024 Apr 11 15:38 lib/libJISX0213.so
--rwxr-xr-x. 1 neo neo   210824 Apr 11 15:38 lib/libk5crypto.so.3
--rwxr-xr-x. 1 neo neo    15688 Apr 11 15:38 lib/libkeyutils.so.1
--rwxr-xr-x. 1 neo neo   967848 Apr 11 15:38 lib/libkrb5.so.3
--rwxr-xr-x. 1 neo neo    67104 Apr 11 15:38 lib/libkrb5support.so.0
--rwxr-xr-x. 1 neo neo    49272 Apr 11 15:38 lib/libKSC.so
--rwxr-xr-x. 1 neo neo    61952 Apr 11 15:38 lib/liblber-2.4.so.2
--rwxr-xr-x. 1 neo neo   352608 Apr 11 15:38 lib/libldap-2.4.so.2
--rwxr-xr-x. 1 neo neo  1137024 Apr 11 15:38 lib/libm-2.17.so
--rwxr-xr-x. 1 neo neo    23296 Apr 11 15:38 lib/libmemusage.so
-lrwxrwxrwx. 1 neo neo       12 Apr 25 09:30 lib/libm.so.6 -> libm-2.17.so
--rwxr-xr-x. 1 neo neo   115848 Apr 11 15:38 lib/libnsl-2.17.so
-lrwxrwxrwx. 1 neo neo       14 Apr 25 09:30 lib/libnsl.so.1 -> libnsl-2.17.so
--rwxr-xr-x. 1 neo neo   251832 Apr 11 15:38 lib/libnspr4.so
--rwxr-xr-x. 1 neo neo  1249576 Apr 11 15:38 lib/libnss3.so
--rwxr-xr-x. 1 neo neo    46432 Apr 11 15:38 lib/libnss_compat-2.17.so
-lrwxrwxrwx. 1 neo neo       21 Apr 25 09:30 lib/libnss_compat.so.2 -> libnss_compat-2.17.so
--rwxr-xr-x. 1 neo neo    38088 Apr 11 15:38 lib/libnss_db-2.17.so
-lrwxrwxrwx. 1 neo neo       17 Apr 25 09:30 lib/libnss_db.so.2 -> libnss_db-2.17.so
--rwxr-xr-x. 1 neo neo    31408 Apr 11 15:38 lib/libnss_dns-2.17.so
-lrwxrwxrwx. 1 neo neo       18 Apr 25 09:30 lib/libnss_dns.so.2 -> libnss_dns-2.17.so
--rwxr-xr-x. 1 neo neo    61624 Apr 11 15:38 lib/libnss_files-2.17.so
-lrwxrwxrwx. 1 neo neo       20 Apr 25 09:30 lib/libnss_files.so.2 -> libnss_files-2.17.so
--rwxr-xr-x. 1 neo neo    23680 Apr 11 15:38 lib/libnss_hesiod-2.17.so
-lrwxrwxrwx. 1 neo neo       21 Apr 25 09:30 lib/libnss_hesiod.so.2 -> libnss_hesiod-2.17.so
--rwxr-xr-x. 1 neo neo    56656 Apr 11 15:38 lib/libnss_nis-2.17.so
--rwxr-xr-x. 1 neo neo    69680 Apr 11 15:38 lib/libnss_nisplus-2.17.so
-lrwxrwxrwx. 1 neo neo       22 Apr 25 09:30 lib/libnss_nisplus.so.2 -> libnss_nisplus-2.17.so
-lrwxrwxrwx. 1 neo neo       18 Apr 25 09:30 lib/libnss_nis.so.2 -> libnss_nis-2.17.so
--rwxr-xr-x. 1 neo neo   199008 Apr 11 15:38 lib/libnssutil3.so
--rwxr-xr-x. 1 neo neo     8808 Apr 11 15:38 lib/libpcprofile.so
--rwxr-xr-x. 1 neo neo   402384 Apr 11 15:38 lib/libpcre.so.1
--rwxr-xr-x. 1 neo neo    20096 Apr 11 15:38 lib/libplc4.so
--rwxr-xr-x. 1 neo neo    15800 Apr 11 15:38 lib/libplds4.so
--rwxr-xr-x. 1 neo neo   141968 Apr 11 15:38 lib/libpthread-2.17.so
-lrwxrwxrwx. 1 neo neo       18 Apr 25 09:30 lib/libpthread.so.0 -> libpthread-2.17.so
--rwxr-xr-x. 1 neo neo   105824 Apr 11 15:38 lib/libresolv-2.17.so
-lrwxrwxrwx. 1 neo neo       17 Apr 25 09:30 lib/libresolv.so.2 -> libresolv-2.17.so
--rwxr-xr-x. 1 neo neo    43776 Apr 11 15:38 lib/librt-2.17.so
--rwxr-xr-x. 1 neo neo    53288 Apr 11 15:38 lib/librtkaio-2.17.so
-lrwxrwxrwx. 1 neo neo       17 Apr 25 09:30 lib/librt.so.1 -> librtkaio-2.17.so
--rwxr-xr-x. 1 neo neo   121320 Apr 11 15:38 lib/libsasl2.so.3
--rwxr-xr-x. 1 neo neo    21984 Apr 11 15:38 lib/libSegFault.so
--rwxr-xr-x. 1 neo neo   155784 Apr 11 15:38 lib/libselinux.so.1
--rwxr-xr-x. 1 neo neo   164288 Apr 11 15:38 lib/libsmime3.so
--rwxr-xr-x. 1 neo neo   174176 Apr 11 15:38 lib/libssh2.so.1
--rwxr-xr-x. 1 neo neo   340976 Apr 11 15:38 lib/libssl3.so
--rwxr-xr-x. 1 neo neo   470360 Apr 11 15:38 lib/libssl.so.10
--rwxr-xr-x. 1 neo neo   991616 Apr 11 15:38 lib/libstdc++.so.6
--rwxr-xr-x. 1 neo neo    38232 Apr 11 15:38 lib/libthread_db-1.0.so
-lrwxrwxrwx. 1 neo neo       19 Apr 25 09:30 lib/libthread_db.so.1 -> libthread_db-1.0.so
--rwxr-xr-x. 1 neo neo    14496 Apr 11 15:38 lib/libutil-2.17.so
-lrwxrwxrwx. 1 neo neo       15 Apr 25 09:30 lib/libutil.so.1 -> libutil-2.17.so
--rwxr-xr-x. 1 neo neo    90248 Apr 11 15:38 lib/libz.so.1
--rwxr-xr-x. 1 neo neo    12704 Apr 11 15:38 lib/MAC-CENTRALEUROPE.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/MACINTOSH.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/MAC-IS.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/MAC-SAMI.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/MAC-UK.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/MIK.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/NATS-DANO.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/NATS-SEFI.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/PT154.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/RK1048.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/SAMI-WS2.so
--rwxr-xr-x. 1 neo neo    16984 Apr 11 15:38 lib/SHIFT_JISX0213.so
--rwxr-xr-x. 1 neo neo    94792 Apr 11 15:38 lib/SJIS.so
--rwxr-xr-x. 1 neo neo    13712 Apr 11 15:38 lib/sotruss-lib.so
--rwxr-xr-x. 1 neo neo    20936 Apr 11 15:38 lib/T.61.so
--rwxr-xr-x. 1 neo neo    16952 Apr 11 15:38 lib/TCVN5712-1.so
--rwxr-xr-x. 1 neo neo    12688 Apr 11 15:38 lib/TIS-620.so
--rwxr-xr-x. 1 neo neo    20984 Apr 11 15:38 lib/TSCII.so
--rwxr-xr-x. 1 neo neo    74336 Apr 11 15:38 lib/UHC.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/UNICODE.so
--rwxr-xr-x. 1 neo neo    16832 Apr 11 15:38 lib/UTF-16.so
--rwxr-xr-x. 1 neo neo    12736 Apr 11 15:38 lib/UTF-32.so
--rwxr-xr-x. 1 neo neo    20912 Apr 11 15:38 lib/UTF-7.so
--rwxr-xr-x. 1 neo neo    12680 Apr 11 15:38 lib/VISCII.so
--rw-rw-r--. 1 neo neo 13297350 Apr 28 00:50 wells-ws3-quantlib.zip
+Archive:  wells-ws3-quantlib.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+        0  04-30-2019 23:53   bin/
+  3101120  05-07-2019 00:26   bin/wells-ws3-quantlib
+      204  05-06-2019 19:10   bootstrap
+        0  05-07-2019 00:26   lib/
+   435192  04-11-2019 15:38   lib/libcurl.so.4
+   991616  04-11-2019 15:38   lib/libstdc++.so.6
+    88776  04-11-2019 15:38   lib/libgcc_s.so.1
+   208920  04-11-2019 15:38   lib/libidn.so.11
+   174176  04-11-2019 15:38   lib/libssh2.so.1
+   340976  04-11-2019 15:38   lib/libssl3.so
+   164288  04-11-2019 15:38   lib/libsmime3.so
+  1249576  04-11-2019 15:38   lib/libnss3.so
+   199008  04-11-2019 15:38   lib/libnssutil3.so
+    15800  04-11-2019 15:38   lib/libplds4.so
+    20096  04-11-2019 15:38   lib/libplc4.so
+   251832  04-11-2019 15:38   lib/libnspr4.so
+   320400  04-11-2019 15:38   lib/libgssapi_krb5.so.2
+   967848  04-11-2019 15:38   lib/libkrb5.so.3
+   210824  04-11-2019 15:38   lib/libk5crypto.so.3
+    15920  04-11-2019 15:38   lib/libcom_err.so.2
+    61952  04-11-2019 15:38   lib/liblber-2.4.so.2
+   352608  04-11-2019 15:38   lib/libldap-2.4.so.2
+    90248  04-11-2019 15:38   lib/libz.so.1
+   163400  04-11-2019 15:38   lib/ld-linux-x86-64.so.2
+   470360  04-11-2019 15:38   lib/libssl.so.10
+  2516624  04-11-2019 15:38   lib/libcrypto.so.10
+    67104  04-11-2019 15:38   lib/libkrb5support.so.0
+    15688  04-11-2019 15:38   lib/libkeyutils.so.1
+   121320  04-11-2019 15:38   lib/libsasl2.so.3
+   155784  04-11-2019 15:38   lib/libselinux.so.1
+   402384  04-11-2019 15:38   lib/libpcre.so.1
+    11448  04-11-2019 15:38   lib/libfreebl3.so
+     8480  04-11-2019 15:38   lib/libBrokenLocale-2.17.so
+     8480  04-11-2019 15:38   lib/libBrokenLocale.so.1
+    21984  04-11-2019 15:38   lib/libSegFault.so
+    19840  04-11-2019 15:38   lib/libanl-2.17.so
+    19840  04-11-2019 15:38   lib/libanl.so.1
+  2151672  04-11-2019 15:38   lib/libc-2.17.so
+  2151672  04-11-2019 15:38   lib/libc.so.6
+   201064  04-11-2019 15:38   lib/libcidn-2.17.so
+   201064  04-11-2019 15:38   lib/libcidn.so.1
+    40664  04-11-2019 15:38   lib/libcrypt-2.17.so
+    40664  04-11-2019 15:38   lib/libcrypt.so.1
+    19288  04-11-2019 15:38   lib/libdl-2.17.so
+    19288  04-11-2019 15:38   lib/libdl.so.2
+  1137024  04-11-2019 15:38   lib/libm-2.17.so
+  1137024  04-11-2019 15:38   lib/libm.so.6
+   115848  04-11-2019 15:38   lib/libnsl-2.17.so
+   115848  04-11-2019 15:38   lib/libnsl.so.1
+    46432  04-11-2019 15:38   lib/libnss_compat-2.17.so
+    46432  04-11-2019 15:38   lib/libnss_compat.so.2
+    38088  04-11-2019 15:38   lib/libnss_db-2.17.so
+    38088  04-11-2019 15:38   lib/libnss_db.so.2
+    31408  04-11-2019 15:38   lib/libnss_dns-2.17.so
+    31408  04-11-2019 15:38   lib/libnss_dns.so.2
+    61624  04-11-2019 15:38   lib/libnss_files-2.17.so
+    61624  04-11-2019 15:38   lib/libnss_files.so.2
+    23680  04-11-2019 15:38   lib/libnss_hesiod-2.17.so
+    23680  04-11-2019 15:38   lib/libnss_hesiod.so.2
+    56656  04-11-2019 15:38   lib/libnss_nis-2.17.so
+    56656  04-11-2019 15:38   lib/libnss_nis.so.2
+    69680  04-11-2019 15:38   lib/libnss_nisplus-2.17.so
+    69680  04-11-2019 15:38   lib/libnss_nisplus.so.2
+   141968  04-11-2019 15:38   lib/libpthread-2.17.so
+   141968  04-11-2019 15:38   lib/libpthread.so.0
+   105824  04-11-2019 15:38   lib/libresolv-2.17.so
+   105824  04-11-2019 15:38   lib/libresolv.so.2
+    43776  04-11-2019 15:38   lib/librt-2.17.so
+    12688  04-11-2019 15:38   lib/IBM1025.so
+    38232  04-11-2019 15:38   lib/libthread_db-1.0.so
+    38232  04-11-2019 15:38   lib/libthread_db.so.1
+    14496  04-11-2019 15:38   lib/libutil-2.17.so
+    14496  04-11-2019 15:38   lib/libutil.so.1
+    53288  04-11-2019 15:38   lib/librt.so.1
+    53288  04-11-2019 15:38   lib/librtkaio-2.17.so
+    13712  04-11-2019 15:38   lib/sotruss-lib.so
+    25184  04-11-2019 15:38   lib/ANSI_X3.110.so
+    12672  04-11-2019 15:38   lib/ARMSCII-8.so
+    12688  04-11-2019 15:38   lib/ASMO_449.so
+    91032  04-11-2019 15:38   lib/BIG5.so
+   237984  04-11-2019 15:38   lib/BIG5HKSCS.so
+    12680  04-11-2019 15:38   lib/BRF.so
+    12688  04-11-2019 15:38   lib/CP10007.so
+    12680  04-11-2019 15:38   lib/CP1125.so
+    12680  04-11-2019 15:38   lib/CP1250.so
+    12680  04-11-2019 15:38   lib/CP1251.so
+    12680  04-11-2019 15:38   lib/CP1252.so
+    12680  04-11-2019 15:38   lib/CP1253.so
+    12680  04-11-2019 15:38   lib/CP1254.so
+    16880  04-11-2019 15:38   lib/CP1255.so
+    12680  04-11-2019 15:38   lib/CP1256.so
+    12680  04-11-2019 15:38   lib/CP1257.so
+    16896  04-11-2019 15:38   lib/CP1258.so
+    12920  04-11-2019 15:38   lib/CP737.so
+    12680  04-11-2019 15:38   lib/CP770.so
+    12680  04-11-2019 15:38   lib/CP771.so
+    12680  04-11-2019 15:38   lib/CP772.so
+    12680  04-11-2019 15:38   lib/CP773.so
+    12680  04-11-2019 15:38   lib/CP774.so
+    12944  04-11-2019 15:38   lib/CP775.so
+    99000  04-11-2019 15:38   lib/CP932.so
+    12688  04-11-2019 15:38   lib/CSN_369103.so
+    12680  04-11-2019 15:38   lib/CWI.so
+    12688  04-11-2019 15:38   lib/DEC-MCS.so
+    12664  04-11-2019 15:38   lib/EBCDIC-AT-DE-A.so
+    12664  04-11-2019 15:38   lib/EBCDIC-AT-DE.so
+    12664  04-11-2019 15:38   lib/EBCDIC-CA-FR.so
+    12664  04-11-2019 15:38   lib/EBCDIC-DK-NO-A.so
+    12664  04-11-2019 15:38   lib/EBCDIC-DK-NO.so
+    12696  04-11-2019 15:38   lib/EBCDIC-ES-A.so
+    12656  04-11-2019 15:38   lib/EBCDIC-ES-S.so
+    12688  04-11-2019 15:38   lib/EBCDIC-ES.so
+    12664  04-11-2019 15:38   lib/EBCDIC-FI-SE-A.so
+    12664  04-11-2019 15:38   lib/EBCDIC-FI-SE.so
+    12656  04-11-2019 15:38   lib/EBCDIC-FR.so
+    12704  04-11-2019 15:38   lib/EBCDIC-IS-FRISS.so
+    12656  04-11-2019 15:38   lib/EBCDIC-IT.so
+    12656  04-11-2019 15:38   lib/EBCDIC-PT.so
+    12688  04-11-2019 15:38   lib/EBCDIC-UK.so
+    12656  04-11-2019 15:38   lib/EBCDIC-US.so
+    12696  04-11-2019 15:38   lib/ECMA-CYRILLIC.so
+    17152  04-11-2019 15:38   lib/EUC-CN.so
+    16984  04-11-2019 15:38   lib/EUC-JISX0213.so
+    86760  04-11-2019 15:38   lib/EUC-JP-MS.so
+    17136  04-11-2019 15:38   lib/EUC-JP.so
+    16912  04-11-2019 15:38   lib/EUC-KR.so
+    26152  04-11-2019 15:38   lib/EUC-TW.so
+   180696  04-11-2019 15:38   lib/GB18030.so
+    57696  04-11-2019 15:38   lib/GBBIG5.so
+    12544  04-11-2019 15:38   lib/GBGBK.so
+   115512  04-11-2019 15:38   lib/GBK.so
+    12704  04-11-2019 15:38   lib/GEORGIAN-ACADEMY.so
+    12696  04-11-2019 15:38   lib/GEORGIAN-PS.so
+    12696  04-11-2019 15:38   lib/GOST_19768-74.so
+    12696  04-11-2019 15:38   lib/GREEK-CCITT.so
+    12688  04-11-2019 15:38   lib/GREEK7-OLD.so
+    12680  04-11-2019 15:38   lib/GREEK7.so
+    12688  04-11-2019 15:38   lib/HP-GREEK8.so
+    12688  04-11-2019 15:38   lib/HP-ROMAN8.so
+    12688  04-11-2019 15:38   lib/HP-ROMAN9.so
+    12688  04-11-2019 15:38   lib/HP-THAI8.so
+    12696  04-11-2019 15:38   lib/HP-TURKISH8.so
+    12648  04-11-2019 15:38   lib/IBM037.so
+    12648  04-11-2019 15:38   lib/IBM038.so
+    12688  04-11-2019 15:38   lib/IBM1004.so
+    12688  04-11-2019 15:38   lib/IBM1008.so
+     8560  04-11-2019 15:38   lib/IBM1008_420.so
+    12688  04-11-2019 15:38   lib/IBM1026.so
+    12688  04-11-2019 15:38   lib/IBM1046.so
+    12648  04-11-2019 15:38   lib/IBM1047.so
+    12688  04-11-2019 15:38   lib/IBM1097.so
+    12688  04-11-2019 15:38   lib/IBM1112.so
+    12688  04-11-2019 15:38   lib/IBM1122.so
+    12688  04-11-2019 15:38   lib/IBM1123.so
+    12688  04-11-2019 15:38   lib/IBM1124.so
+    12688  04-11-2019 15:38   lib/IBM1129.so
+    12688  04-11-2019 15:38   lib/IBM1130.so
+    12688  04-11-2019 15:38   lib/IBM1132.so
+    12688  04-11-2019 15:38   lib/IBM1133.so
+    12688  04-11-2019 15:38   lib/IBM1137.so
+    12688  04-11-2019 15:38   lib/IBM1140.so
+    12688  04-11-2019 15:38   lib/IBM1141.so
+    12688  04-11-2019 15:38   lib/IBM1142.so
+    12688  04-11-2019 15:38   lib/IBM1143.so
+    12688  04-11-2019 15:38   lib/IBM1144.so
+    12688  04-11-2019 15:38   lib/IBM1145.so
+    12688  04-11-2019 15:38   lib/IBM1146.so
+    12688  04-11-2019 15:38   lib/IBM1147.so
+    12688  04-11-2019 15:38   lib/IBM1148.so
+    12688  04-11-2019 15:38   lib/IBM1149.so
+    12688  04-11-2019 15:38   lib/IBM1153.so
+    12688  04-11-2019 15:38   lib/IBM1154.so
+    12688  04-11-2019 15:38   lib/IBM1155.so
+    12688  04-11-2019 15:38   lib/IBM1156.so
+    12688  04-11-2019 15:38   lib/IBM1157.so
+    12688  04-11-2019 15:38   lib/IBM1158.so
+    12688  04-11-2019 15:38   lib/IBM1160.so
+    12688  04-11-2019 15:38   lib/IBM1161.so
+    12688  04-11-2019 15:38   lib/IBM1162.so
+    12688  04-11-2019 15:38   lib/IBM1163.so
+    12688  04-11-2019 15:38   lib/IBM1164.so
+    12688  04-11-2019 15:38   lib/IBM1166.so
+    12688  04-11-2019 15:38   lib/IBM1167.so
+    12688  04-11-2019 15:38   lib/IBM12712.so
+   152136  04-11-2019 15:38   lib/IBM1364.so
+   127560  04-11-2019 15:38   lib/IBM1371.so
+   176712  04-11-2019 15:38   lib/IBM1388.so
+   230064  04-11-2019 15:38   lib/IBM1390.so
+   230064  04-11-2019 15:38   lib/IBM1399.so
+    12688  04-11-2019 15:38   lib/IBM16804.so
+    12680  04-11-2019 15:38   lib/IBM256.so
+    12680  04-11-2019 15:38   lib/IBM273.so
+    12648  04-11-2019 15:38   lib/IBM274.so
+    12648  04-11-2019 15:38   lib/IBM275.so
+    12680  04-11-2019 15:38   lib/IBM277.so
+    12680  04-11-2019 15:38   lib/IBM278.so
+    12680  04-11-2019 15:38   lib/IBM280.so
+    12680  04-11-2019 15:38   lib/IBM281.so
+    12680  04-11-2019 15:38   lib/IBM284.so
+    12680  04-11-2019 15:38   lib/IBM285.so
+    12680  04-11-2019 15:38   lib/IBM290.so
+    12680  04-11-2019 15:38   lib/IBM297.so
+    12680  04-11-2019 15:38   lib/IBM420.so
+    12648  04-11-2019 15:38   lib/IBM423.so
+    12680  04-11-2019 15:38   lib/IBM424.so
+    12680  04-11-2019 15:38   lib/IBM437.so
+    12688  04-11-2019 15:38   lib/IBM4517.so
+    12688  04-11-2019 15:38   lib/IBM4899.so
+    12688  04-11-2019 15:38   lib/IBM4909.so
+    12688  04-11-2019 15:38   lib/IBM4971.so
+    12648  04-11-2019 15:38   lib/IBM500.so
+    12688  04-11-2019 15:38   lib/IBM5347.so
+    12680  04-11-2019 15:38   lib/IBM803.so
+    12680  04-11-2019 15:38   lib/IBM850.so
+    12680  04-11-2019 15:38   lib/IBM851.so
+    12680  04-11-2019 15:38   lib/IBM852.so
+    12680  04-11-2019 15:38   lib/IBM855.so
+    12680  04-11-2019 15:38   lib/IBM856.so
+    12680  04-11-2019 15:38   lib/IBM857.so
+    12680  04-11-2019 15:38   lib/IBM860.so
+    12680  04-11-2019 15:38   lib/IBM861.so
+    12680  04-11-2019 15:38   lib/IBM862.so
+    12680  04-11-2019 15:38   lib/IBM863.so
+    12680  04-11-2019 15:38   lib/IBM864.so
+    12680  04-11-2019 15:38   lib/IBM865.so
+    12680  04-11-2019 15:38   lib/IBM866.so
+    12688  04-11-2019 15:38   lib/IBM866NAV.so
+    12680  04-11-2019 15:38   lib/IBM868.so
+    12680  04-11-2019 15:38   lib/IBM869.so
+    12648  04-11-2019 15:38   lib/IBM870.so
+    12648  04-11-2019 15:38   lib/IBM871.so
+    12680  04-11-2019 15:38   lib/IBM874.so
+    12680  04-11-2019 15:38   lib/IBM875.so
+    12680  04-11-2019 15:38   lib/IBM880.so
+    12648  04-11-2019 15:38   lib/IBM891.so
+    12680  04-11-2019 15:38   lib/IBM901.so
+    12680  04-11-2019 15:38   lib/IBM902.so
+    12648  04-11-2019 15:38   lib/IBM903.so
+    12688  04-11-2019 15:38   lib/IBM9030.so
+    12648  04-11-2019 15:38   lib/IBM904.so
+    12648  04-11-2019 15:38   lib/IBM905.so
+    12688  04-11-2019 15:38   lib/IBM9066.so
+    12680  04-11-2019 15:38   lib/IBM918.so
+    12680  04-11-2019 15:38   lib/IBM921.so
+    12680  04-11-2019 15:38   lib/IBM922.so
+   107064  04-11-2019 15:38   lib/IBM930.so
+    70192  04-11-2019 15:38   lib/IBM932.so
+   127544  04-11-2019 15:38   lib/IBM933.so
+    90680  04-11-2019 15:38   lib/IBM935.so
+   115256  04-11-2019 15:38   lib/IBM937.so
+   107064  04-11-2019 15:38   lib/IBM939.so
+    74288  04-11-2019 15:38   lib/IBM943.so
+    12688  04-11-2019 15:38   lib/IBM9448.so
+    12688  04-11-2019 15:38   lib/IEC_P27-1.so
+    12680  04-11-2019 15:38   lib/INIS-8.so
+    12696  04-11-2019 15:38   lib/INIS-CYRILLIC.so
+    12680  04-11-2019 15:38   lib/INIS.so
+    12688  04-11-2019 15:38   lib/ISIRI-3342.so
+    47216  04-11-2019 15:38   lib/ISO-2022-CN-EXT.so
+    34392  04-11-2019 15:38   lib/ISO-2022-CN.so
+    25424  04-11-2019 15:38   lib/ISO-2022-JP-3.so
+    42800  04-11-2019 15:38   lib/ISO-2022-JP.so
+    16888  04-11-2019 15:38   lib/ISO-2022-KR.so
+    12688  04-11-2019 15:38   lib/ISO-IR-197.so
+    12688  04-11-2019 15:38   lib/ISO-IR-209.so
+    25048  04-11-2019 15:38   lib/ISO646.so
+    12584  04-11-2019 15:38   lib/ISO8859-1.so
+    12688  04-11-2019 15:38   lib/ISO8859-10.so
+    12688  04-11-2019 15:38   lib/ISO8859-11.so
+    12688  04-11-2019 15:38   lib/ISO8859-13.so
+    12688  04-11-2019 15:38   lib/ISO8859-14.so
+    12688  04-11-2019 15:38   lib/ISO8859-15.so
+    12688  04-11-2019 15:38   lib/ISO8859-16.so
+    12656  04-11-2019 15:38   lib/ISO8859-2.so
+    12656  04-11-2019 15:38   lib/ISO8859-3.so
+    12656  04-11-2019 15:38   lib/ISO8859-4.so
+    12688  04-11-2019 15:38   lib/ISO8859-5.so
+    12656  04-11-2019 15:38   lib/ISO8859-6.so
+    12688  04-11-2019 15:38   lib/ISO8859-7.so
+    12688  04-11-2019 15:38   lib/ISO8859-8.so
+    12656  04-11-2019 15:38   lib/ISO8859-9.so
+    12688  04-11-2019 15:38   lib/ISO8859-9E.so
+    12696  04-11-2019 15:38   lib/ISO_10367-BOX.so
+    12592  04-11-2019 15:38   lib/ISO_11548-1.so
+    12688  04-11-2019 15:38   lib/ISO_2033.so
+    12696  04-11-2019 15:38   lib/ISO_5427-EXT.so
+    12688  04-11-2019 15:38   lib/ISO_5427.so
+    12688  04-11-2019 15:38   lib/ISO_5428.so
+    20952  04-11-2019 15:38   lib/ISO_6937-2.so
+    20944  04-11-2019 15:38   lib/ISO_6937.so
+    21312  04-11-2019 15:38   lib/JOHAB.so
+    12648  04-11-2019 15:38   lib/KOI-8.so
+    12680  04-11-2019 15:38   lib/KOI8-R.so
+    12688  04-11-2019 15:38   lib/KOI8-RU.so
+    12680  04-11-2019 15:38   lib/KOI8-T.so
+    12680  04-11-2019 15:38   lib/KOI8-U.so
+    12696  04-11-2019 15:38   lib/LATIN-GREEK-1.so
+    12696  04-11-2019 15:38   lib/LATIN-GREEK.so
+    12704  04-11-2019 15:38   lib/MAC-CENTRALEUROPE.so
+    12680  04-11-2019 15:38   lib/MAC-IS.so
+    12688  04-11-2019 15:38   lib/MAC-SAMI.so
+    12680  04-11-2019 15:38   lib/MAC-UK.so
+    12688  04-11-2019 15:38   lib/MACINTOSH.so
+    12680  04-11-2019 15:38   lib/MIK.so
+    12688  04-11-2019 15:38   lib/NATS-DANO.so
+    12688  04-11-2019 15:38   lib/NATS-SEFI.so
+    12680  04-11-2019 15:38   lib/PT154.so
+    12680  04-11-2019 15:38   lib/RK1048.so
+    12688  04-11-2019 15:38   lib/SAMI-WS2.so
+    16984  04-11-2019 15:38   lib/SHIFT_JISX0213.so
+    94792  04-11-2019 15:38   lib/SJIS.so
+    20936  04-11-2019 15:38   lib/T.61.so
+    16952  04-11-2019 15:38   lib/TCVN5712-1.so
+    12688  04-11-2019 15:38   lib/TIS-620.so
+    20984  04-11-2019 15:38   lib/TSCII.so
+    74336  04-11-2019 15:38   lib/UHC.so
+    12680  04-11-2019 15:38   lib/UNICODE.so
+    16832  04-11-2019 15:38   lib/UTF-16.so
+    12736  04-11-2019 15:38   lib/UTF-32.so
+    20912  04-11-2019 15:38   lib/UTF-7.so
+    12680  04-11-2019 15:38   lib/VISCII.so
+   472240  04-11-2019 15:38   lib/libCNS.so
+    69992  04-11-2019 15:38   lib/libGB.so
+    61464  04-11-2019 15:38   lib/libISOIR165.so
+   102816  04-11-2019 15:38   lib/libJIS.so
+   123024  04-11-2019 15:38   lib/libJISX0213.so
+    49272  04-11-2019 15:38   lib/libKSC.so
+    23296  04-11-2019 15:38   lib/libmemusage.so
+     8808  04-11-2019 15:38   lib/libpcprofile.so
+---------                     -------
+ 28652284                     329 files
