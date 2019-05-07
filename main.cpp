@@ -5,6 +5,7 @@
 #include "json.h"
 
 #include <aws/lambda-runtime/runtime.h>
+#include <aws/core/Aws.h>
 #include <iostream>
 #include <cstdlib>
 
@@ -40,8 +41,8 @@ namespace workshop {
     OptionPricer pricer;
     pricer.price(queue, event);
 
-    DBHandler g_dbh;
-    g_dbh.save(event, pricer.strikes());
+    DBHandler dbh;
+    dbh.save(event, pricer.strikes());
     //return 0;
     return sendSuccess("Recieved Message");
   }
@@ -55,7 +56,7 @@ int main(int argc, char* argv[])
   try
   {
     std::string m_queue_enum("sb2");
-
+    Aws::SDKOptions awsoptions;
     char* envget = getenv("WF_STRIKE_BUCKET");
     if(envget) {
       m_queue_enum = envget;
@@ -68,12 +69,13 @@ int main(int argc, char* argv[])
     \"Message\": \"{\\\"symbol\\\":\\\"VIX\\\",\\\"tickpr\\\":\\\"16.34\\\",\\\"lambda\\\":\\\"q0\\\",\\\"epoch\\\":1557042500422,\\\"tickvol\\\":\\\"89.67\\\"}\", \
     \"Timestamp\": \"2019-04-30T19:00:00.944Z\", \"SignatureVersion\": \"1\", \"Signature\": \"/+///==\", \"SigningCertUrl\": \"https://amazonaws.com/SimpleNotificationService.pem\", \"UnsubscribeUrl\": \"https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19\", \"MessageAttributes\": {} } } ] }";
     */    
-
+    Aws::InitAPI(awsoptions);
     auto m_handler_func = [&m_queue_enum ](const aws::lambda_runtime::invocation_request& req) {
       return run_local_handler(req, m_queue_enum);
     };
 
     aws::lambda_runtime::run_handler(m_handler_func);
+    Aws::ShutdownAPI(awsoptions);
     //return run_local_handler(req, m_queue_enum);
   }
   catch(const std::exception &ae) {
