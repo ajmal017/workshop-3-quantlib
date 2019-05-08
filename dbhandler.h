@@ -5,10 +5,10 @@
 #include <vector>
 #include <memory>
 
-//forward declare;
-namespace Aws { namespace DynamoDB {
-    class DynamoDBClient;
-}}
+// //forward declare;
+// namespace Aws { namespace DynamoDB {
+//     class DynamoDBClient;
+// }}
 
 namespace wellsfargo {
     namespace workshop {
@@ -19,7 +19,7 @@ class DBHandler {
     ~DBHandler();
     void save(const InputMessage& event, const std::vector<StrikeValue>& strikes);
     private:
-    std::shared_ptr<Aws::DynamoDB::DynamoDBClient> m_dbclient;
+    // std::shared_ptr<Aws::DynamoDB::DynamoDBClient> m_dbclient;
 };
     }
 }

@@ -8,9 +8,6 @@
 namespace wellsfargo {
     namespace workshop {
         namespace {
-            const char access_key_id[] = "AKIARCADW6K2H3UMRRN4";
-            const char secret_access_key[] = "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";
-            const char tablename[] = "PricerVol";
 
             class RedisClient {
                 public:
@@ -18,7 +15,7 @@ namespace wellsfargo {
                 RedisClient():m_client() {}
 
                 ~RedisClient() {
-                    redisFree(m_client.get());
+                    //redisFree(m_client.get());
                 }
                 
                 bool isConnected() const { return (m_client != nullptr);}
@@ -27,27 +24,27 @@ namespace wellsfargo {
                 redisContext* get() { 
                     if(!isConnected()) { return nullptr;}
 
-                    redisContext* c = m_client.get();
-                    return c;
+                    //redisContext* c = m_client.get();
+                    return m_client.get();
                 }
 
                 private:
                 std::shared_ptr<redisContext> m_client;
             };
 
+            const std::string pass = "well$W0rkSh0p3R3d1s";
             static RedisClient g_client;
         }
 
         DBHandler::DBHandler() {
-            /*
+            
             if(!g_client.isConnected())
             {
                 redisContext *client = 0;
-                const char* hostname = "pricevolcache-001.fy3nza.001.aps1.cache.amazonaws.com:6379";
+                const char* hostname = "13.234.26.186";
+                const int port = 6379;
 
-                struct timeval timeout = {1, 500000}; //1.5 seconds
-
-                client = redisConnectUnixWithTimeout(hostname, timeout);
+                client = redisConnect(hostname, port);
 
                 if(client == NULL || client->err) {
                     if (client) {
@@ -60,26 +57,35 @@ namespace wellsfargo {
                         throw std::runtime_error("Cannot find Redis DB");
                     }
                 }
+                redisReply *reply = 0;
+                reply = (redisReply *)redisCommand(client, "AUTH %s", pass.c_str());
+                if(!reply || reply->type == REDIS_REPLY_ERROR)
+                {
+                    std::cerr << "error authenticating connection. " << std::endl;
+                    throw std::runtime_error("Cannot Authenticate Redis DB");
+                }
+                freeReplyObject(reply);
+
                 g_client.reset(client);
-            }*/
+            }
         }
 
         void DBHandler::save(const InputMessage& event, const std::vector<StrikeValue> &strikes) 
         { 
-            redisReply *reply = 0;
             for( auto st : strikes)
             {
                 std::string temp = st.payload(event);
-                //reply = (redisReply *)redisCommand(g_client.get(), "SADD %d %.*s", 
-//                                                        event.epoch(), temp.size(), temp.c_str());
+                redisReply *reply = 0;
+                reply = (redisReply *)redisCommand(g_client.get(), "SADD %ld %s", event.epoch(), temp.c_str());
                 if(!reply || reply->type == REDIS_REPLY_ERROR)
                 {
                     std::cerr << "error saving to db for <" << temp << "> for epoch <" << event.epoch() 
-                            << ">" << std::endl;
+                        << std::endl;
                 }
-                //freeReplyObject(reply);
+                freeReplyObject(reply);
             }
 
+            std::cerr <<"Saved " << strikes.size() << " values for epoch " << event.epoch() << std::endl;
             return;
         }
 

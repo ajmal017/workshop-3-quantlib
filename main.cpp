@@ -60,15 +60,13 @@ int main(int argc, char* argv[])
     if(envget) {
       m_queue_enum = envget;
     }
-
     /*
     aws::lambda_runtime::invocation_request req;
     req.payload = "{ \"Records\": [ { \"EventSource\": \"aws:sns\", \"EventVersion\": \"1.0\", \"EventSubscriptionArn\": \"arn:aws:sns:ap-south-1:::-6022-4a28-8a41\", \
     \"Sns\": { \"Type\": \"Notification\", \"MessageId\": \"b9ce43e7-780d--860c-\", \"TopicArn\": \"arn:aws:sns:ap-south-1::\", \"Subject\": null, \
-    \"Message\": \"{\\\"symbol\\\":\\\"VIX\\\",\\\"tickpr\\\":\\\"16.34\\\",\\\"lambda\\\":\\\"q0\\\",\\\"epoch\\\":1557042500422,\\\"tickvol\\\":\\\"89.67\\\"}\", \
+    \"Message\": \"{\\\"symbol\\\":\\\"VIX\\\",\\\"tickpr\\\":\\\"16.34\\\",\\\"lambda\\\":\\\"q0\\\",\\\"epoch\\\":1557042500422,\\\"tickvol\\\":\\\"0.8967\\\"}\", \
     \"Timestamp\": \"2019-04-30T19:00:00.944Z\", \"SignatureVersion\": \"1\", \"Signature\": \"/+///==\", \"SigningCertUrl\": \"https://amazonaws.com/SimpleNotificationService.pem\", \"UnsubscribeUrl\": \"https://amazonaws.com/?Action=Unsubscribe&-6ea6f23f6c19\", \"MessageAttributes\": {} } } ] }";
-    */    
-
+    */
     auto m_handler_func = [&m_queue_enum ](const aws::lambda_runtime::invocation_request& req) {
       return run_local_handler(req, m_queue_enum);
     };
